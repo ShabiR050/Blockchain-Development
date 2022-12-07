@@ -12,7 +12,7 @@ POW (Proof of Work):->
 
 * After 210000 blocks, or 4 years, coinbase rewards get divided by 2. [50 btc => 25 => 12.5 => 6.26 as of now](This is called halving.). 4 year halving cycle.
 
-* Since minors get fewer rewards, the price of bitcoin will increase. Minors control the circulation of bitcoin price.They'll sell the bitcoin at a higher price to get the benefit.
+* Since miners get fewer rewards, the price of bitcoin will increase. Miners control the circulation of bitcoin price.They'll sell the bitcoin at a higher price to get the benefit.
 
 * Reward : Coinbase/Mining Reward (6.25 BTC) + Transaction Fee (1-2 lakh)
 
