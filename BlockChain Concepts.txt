@@ -1,0 +1,130 @@
+POW (Proof of Work):->
+
+* Each Blocksize: 1 MB, after forking: 4 MB
+
+* 2700 transactions in a block result in 4 or 5 transactions per second after 10 minutes (7–19 minutes, i.e., an average of 10 minutes).
+
+* Transactions in the mempool can be held for up to 72 hours. After that, it'll be deleted from the mempool, and you'll have to resend the transaction.
+
+* Every two weeks, the bitcoin blockchain checks the average time for the last two weeks. Based on this, the diff level was adjusted to make the average mining time per block 10 minutes.
+
+* 10 minutes = 2 weeks = 2016 mined blocks. The difference was adjusted after the 2016 block (after 2 weeks).
+
+* After 210000 blocks, or 4 years, coinbase rewards get divided by 2. [50 btc => 25 => 12.5 => 6.26 as of now](This is called halving.). 4 year halving cycle.
+
+* Since minors get fewer rewards, the price of bitcoin will increase. Minors control the circulation of bitcoin price.They'll sell the bitcoin at a higher price to get the benefit.
+
+* Reward : Coinbase/Mining Reward (6.25 BTC) + Transaction Fee (1-2 lakh)
+
+* We get bitcoin cash after forking the blockchain to a 4MB size from a 1MB size.
+
+* Bitcoin works with the longest chain.
+
+* wallet = public key + private key.
+
+* Hierarchical deterministic wallet: HD wallet (different keys for each transaction)
+
+* Hash (public key) = Bitcoin address [Bitcoin protocol rule : git]
+
+* Miners will receive the rewards, but they will not be usable until the next 100 blocks are created, which will be around 16 or 17 hours.(coinbase maturity)
+
+* Transaction hash: find the hash of each transaction, then apply the merle tree to find the final transaction hash. The following formula will be used to calculate the block hash: block no + nonce + transaction hash + timestamp.
+
+* CPU: Mega Hash/Sec vs. GPU : Giga Hash/Sec vs. ASIC (application specific integrated circuit): Terra Hash/Sec
+
+* Drawbacks of POW: (1 blockchain i.e no Sharding)
+
+    * Too much energy consumption: Bitcoin annual mining = Argentina's electricity
+
+    * Network Congestion (NC): dynamic gas price, i.e., Gwei. NC is high => Gwei high and alternate. Transactions in Dapps with high NC take longer to add to the blockchain.Block confirmation takes time. Blockchain adoption leads to increased network congestion.
+
+
+
+POS (Proof of Stake):-
+
+* Ethereum 2.0: POS (Beacon Chain): POS based Ethereum blockchain (Serenity):
+
+    * POS consensus
+
+    * Shard Chains
+
+* There are no miners in POS. Validators, rather than miners, should be used at the POS. required 32 ETH to be a validator network. There are liquidity pools, or staking pools, in which groups of people invest money until they reach 32 ETH, etc., and become validators. For a limited time, 32 ETH will be locked, and the blockchain software will act as a validator. Dapps can be liquidity pools.
+
+* POS:-
+
+    * 32 ETH are staked or locked in the Ethereum software. (Geth : GO implementation of the ETH, store private/public key.)
+
+    * These three types of software must be installed. (Part of GETH): (POS architecture)
+
+            * Execution client
+
+            * Consensus client (consensus: voting  and reaching agreement)
+
+            * Validator Client
+                * Once 32 ETH are deposited (blockchain software will be activated), a validator joins a queue where others are waiting to be validators.
+
+    * Adding new blocks in POS:
+
+        * How blocks added in POS: 
+
+            * Beacon chains have slots and epochs.
+
+                * There is a data structure that has 32 partitions. Each partition is called a slot. The combination of 32 slots is called an "epoch."
+
+                * Every slot can accept transactions. They are representations of proposed blocks. Slots are the intermediate state of a block.
+
+                * When the validator wants to add a block to the Ethereum blockchain, he'll try to propose a transaction in any of the slots. People / validators are randomly chosen to add these blocks.
+
+                * The person with the best hardware mines the transaction in POW. But in POS, people are randomly chosen. Only one validator will be chosen at a time for a block to be added.
+
+                * The amount of ETH staked was chosen as a validator based on probability.
+
+            * POS committees: (128 committee members/attester)
+
+                * For every slot, there will be 1 proposer or validator (Randomly chosen to add blocks or transactions to the blockchain) and at least 128 committee members (they are also randomly chosen validators). So each of them also staked at least 32 ethers.
+
+                * The job of committee members is to validate whether the transaction or block added by the proposer or validator is valid or malicious. Here, the majority required is 2/3 = 66% (committee members) in order to confirm a particular slot.
+
+                * So, 1 validator is chosen at random from that queue each time, and 128 other validators are chosen at random for each slot for committee members to validate 1 transaction or add 1 block. The same thing happens for each slot, i.e., for 32 slots in one epoch.
+
+                * Each slot will be 12 seconds long. The complete epoch is 6.4 minutes long. No empty slots are sent to blockchain.
+
+                * BeaconChain will penalise the proposer if it is unable to add a transaction to the slot. Some of the staked Ethereum will be burned. Some of the 32 ethers will be consumed in the process.
+
+                * If it commits fraud, a portion of the stake will be burned. (1%)
+
+                * The Ethereum blockchain has a list of active validators. If any malicious activity found by a validator, ethereum ll remove it block chain network.
+
+                * If a slot or block is added to the blockchain, the checkpoint will reverse it if any malicious transactions are discovered.
+
+                * Every epoch's first slot is a checkpoint. It'll behave as an accepted or final version of blockchain. The last accepted state Based on the voting of committee members, that will roll back to the last checkpoint.
+
+                * Epoch 0 + Slot 0 = Genesis Block. Every epoch is meant to reach finality. An epoch can have a maximum of <=32 slots. The role of epoch is to add checkpointing and more security to the blockchain.
+
+                * Blocks are added to the blockchain in batches of 32. 1 slot = 1 block, and each block has its own set of transactions.
+
+                * Each epoch's validator task is as follows:-> 1 slot:
+
+                        * Randomly chosen to propose a new block.
+
+                        * A committee member was chosen at random to cast a vote in order to approve the transaction.
+
+                        * Committee members will run the transaction once again inside the slots to verify the signature of the transaction, i.e., the public key and private key. Once they verify the signature, they'll vote. (Match the signature with the proposer's signature.
+
+        * Reward:-
+
+            * Base reward = validator effective balance * 2^6 / SQRT(Effective Bal. of all active validators).
+
+            * Reward for POS: % of total staked Ethereum. Rewards will be given for each slot.
+
+            * In one epoch, one can be either a proposer or an attester at any time. 1 task per epoch.You will be paid interest on the total amount of ether staked. There is no mining in POS. Whatever percentage of ether you receive as a reward will be added to the ether's circulation. Withdrawal of staked ether after 1.5 years.
+
+
+    * Sharding in POS (also known as horizontal sharding): (Parallel blockchain: 15% faster transactions).
+
+        * There is one beacon chain and 64 shard chains. Tasks will be divided among 64 shard chains. The beacon chain will be referenced by all shard chains. The beacon chain is able to read the data from each and every shard chain. The unique properties of shard chains will be stored in beacon chains in the form of hashes. Tasks are being assigned to the shred chain by the beacon chain.
+ 
+ 
+ 
+ 
+ 
