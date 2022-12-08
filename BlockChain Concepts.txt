@@ -4,7 +4,7 @@ POW (Proof of Work):->
 
 * 2700 transactions in a block result in 4 or 5 transactions per second after 10 minutes (7–19 minutes, i.e., an average of 10 minutes).
 
-* Transactions in the mempool can be held for up to 72 hours. After that, it'll be deleted from the mempool, and you'll have to resend the transaction.
+* Transactions in the mempool can be held for up to 14 days.The Higher transaction fees replaces the lower transaction fees to other mempool. After that, it'll be deleted from the mempool, and you'll have to resend the transaction.
 
 * Every two weeks, the bitcoin blockchain checks the average time for the last two weeks. Based on this, the diff level was adjusted to make the average mining time per block 10 minutes.
 
