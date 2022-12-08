@@ -6,6 +6,8 @@ POW (Proof of Work):->
 
 * Transactions in the mempool can be held for up to 14 days.The Higher transaction fees replaces the lower transaction fees to other mempool. After that, it'll be deleted from the mempool, and you'll have to resend the transaction.
 
+* After the transaction is added to the blockchain,it wait for another 6 blocks to be added in the same block chain in order to make it irreversible transaction.
+
 * Every two weeks, the bitcoin blockchain checks the average time for the last two weeks. Based on this, the diff level was adjusted to make the average mining time per block 10 minutes.
 
 * 10 minutes = 2 weeks = 2016 mined blocks. The difference was adjusted after the 2016 block (after 2 weeks).
