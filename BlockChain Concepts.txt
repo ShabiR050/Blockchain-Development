@@ -1,4 +1,13 @@
+* Ether - The native currency of Ethereum use to power smart contracts
+
+* Tokens - Different from Ether. Tokens are a cryptocurrency that’s built on the Ethereum platform.
+
+* DApps created on the Ethereum platform are powered their own tokens. Why not just use ether? Using tokens to execute certain functions in the smart contract of the DAPPS makes the process simpler and more seamless.
+
+* Tokens are simply digital assets that are built on top of the Ethereum blockchain, so developers do not have to go and create their own blockchain. Using tokens instead of straight ether also strengthens the Ethereum ecosystem by driving demand for ether.
+
 POW (Proof of Work):->
+----------------------
 
 * Each Blocksize: 1 MB, after forking: 4 MB
 
@@ -43,7 +52,7 @@ POW (Proof of Work):->
 
 
 POS (Proof of Stake):-
-
+----------------------
 * Ethereum 2.0: POS (Beacon Chain): POS based Ethereum blockchain (Serenity):
 
     * POS consensus
