@@ -1,6 +1,12 @@
-* Ether - The native currency of Ethereum use to power smart contracts
+What is a token?
+
+* While often misunderstood, a blockchain token is a powerful tool. A blockchain token can represent almost anything that we want to assign a value to. This representation includes whether the thing is virtual or a real-world, tangible object.
+
+* A token can grant special platform permissions to a user, grant exclusive access to a service, or represent ownership. A token also can represent cryptocurrencies that have monetary value. Let's dive into the history of tokens and explore various use cases. We'll demonstrate exactly what a token is and what you can do with it.
 
 * Tokens - Different from Ether. Tokens are a cryptocurrency that’s built on the Ethereum platform.
+
+* Ether - The native currency of Ethereum use to power smart contracts
 
 * DApps created on the Ethereum platform are powered their own tokens. Why not just use ether? Using tokens to execute certain functions in the smart contract of the DAPPS makes the process simpler and more seamless.
 
