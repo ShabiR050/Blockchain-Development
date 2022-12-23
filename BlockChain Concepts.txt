@@ -12,6 +12,19 @@ What is a token?
 
 * Tokens are simply digital assets that are built on top of the Ethereum blockchain, so developers do not have to go and create their own blockchain. Using tokens instead of straight ether also strengthens the Ethereum ecosystem by driving demand for ether.
 
+Two categories of blockchain tokens:-
+Different kinds of tokens are available in blockchain, but they're usually in one of two categories:
+
+Fungible. Fungible tokens are:
+* Equivalent
+* Exchangeable
+* Valued by how many you have
+Non-fungible. Non-fungible tokens are:
+* Unique
+* Distinct
+* Valued by which ones you have
+
+
 POW (Proof of Work):->
 ----------------------
 
