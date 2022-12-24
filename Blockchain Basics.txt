@@ -1,3 +1,7 @@
+* Mining: is all about finding a Nounce value which will generate a hash value below a certain target threshold set by bitcoin network.
+
+* A consensus protocol is a process used to achieve agreement between participents of a distributed network.
+
 Data location:
 When you use a reference type, you must explicitly provide the data storage location for the type. The following options can be used to specify the data location where the type is stored:
 
