@@ -34,11 +34,11 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
     Note that these 2 means of optimization are not the same!!
 
-    A lot of times, you may deploy a larger solidity code (so with higher deployment gas cost) but more optimized for every function call. (So with a smaller calling gas cost)
+    - A lot of times, you may deploy a larger solidity code (so with higher deployment gas cost) but more optimized for every function call. (So with a smaller calling gas cost)
 
-    If you need to choose which type of optimization, you need to use.
+    - If you need to choose which type of optimization, you need to use.
 
-    I strongly advise you to optimize every function call as the deployment is made only one time and the user experience will be enhanced. (unless your smart contract size exceeds the limit of 24Kb)
+    - I strongly advise you to optimize every function call as the deployment is made only one time and the user experience will be enhanced. (unless your smart contract size exceeds the limit of 24Kb)
 
 
 -------------------------------------
@@ -75,9 +75,9 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
         ●	LOG4 -> Create an event with 4 topics. (1875 gas)
 
-    (This is in fact an estimation. Some of them may vary depending on the situation.)
-    The best website which describes how much each opcode is https://www.evm.codes/, it’s very well explained.
-    If you know that, you’ll better understand solidity and you’ll get a “better” intuition of how much each line of code costs you.
+    - (This is in fact an estimation. Some of them may vary depending on the situation.)
+    - The best website which describes how much each opcode is https://www.evm.codes/, it’s very well explained.
+    - If you know that, you’ll better understand solidity and you’ll get a “better” intuition of how much each line of code costs you.
 
     ★ A2 Use view the modifier:-
     -----------------------------
@@ -86,14 +86,15 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
                 return balance;
         }
     
-    You can easily cut your gas costs to 0 when you call the smart contract if you don’t write to the storage. (moreover, you don’t need to wait 5–20 seconds the response)
-    (A3 Understand the solidity programming language & A4 Become good at computer science/algorithms)
+    - You can easily cut your gas costs to 0 when you call the smart contract if you don’t write to the storage. (moreover, you don’t need to wait 5–20 seconds the response)
+    - (A3 Understand the solidity programming language & A4 Become good at computer science/algorithms)
 
 
 * Tier B:
 ----------
-    These tips and tricks can save you a good amount of gas and should be implemented as much as possible.
-    IMPORTANT NOTE BEFORE STARTING:
+
+    - These tips and tricks can save you a good amount of gas and should be implemented as much as possible.
+    - IMPORTANT NOTE BEFORE STARTING:
         ●	As the not_optimized() function is situated before optimized() function in the byte code.
 
         ●	Calling optimized() costs more than not_optimized() with the same code (22 more gas), so I will subtract 22 gas on each call to optimized() function.
@@ -101,44 +102,44 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ B1 Batching operations (Saved gas: 21000 gas * batched transactions):
     -----------------------------------------------------------------------
 
-        Submitting a transaction alone on the blockchain costs a lot of gas (21000 gas to be precise), so if you can find a way to batch transactions for your users, it can save you a good amount of gas.
+        - Submitting a transaction alone on the blockchain costs a lot of gas (21000 gas to be precise), so if you can find a way to batch transactions for your users, it can save you a good amount of gas.
 
     ★ B2 change orders of storage slot (20000 gas saved at deployment):
     --------------------------------------------------------------------
 
-        Ethereum storage is composed of slots of 32 bytes, the problem is that writing is expensive. (Up to 20000 gas using “cold” writing)
+        - Ethereum storage is composed of slots of 32 bytes, the problem is that writing is expensive. (Up to 20000 gas using “cold” writing)
 
-        Let’s say you have 3 variables:
+        - Let’s say you have 3 variables:
 
-        unit128 a; // slot 0(16 bytes)
-        unit256 b; // slot 1(32 bytes)
-        unit128 c; // slot 2(16 bytes)
+                unit128 a; // slot 0(16 bytes)
+                unit256 b; // slot 1(32 bytes)
+                unit128 c; // slot 2(16 bytes)
 
-        //They uses 3 different storage slots
-        unit256 b; // slot 0(32 bytes)
-        unit128 a; // slot 1(16 bytes)
-        unit128 c; // slot 1(16 bytes)
+                //They uses 3 different storage slots
+                unit256 b; // slot 0(32 bytes)
+                unit128 a; // slot 1(16 bytes)
+                unit128 c; // slot 1(16 bytes)
 
-        But if we align the 3 slots well, we can economize 1 slot. (a and c variable will be in the same slot)
+        - But if we align the 3 slots well, we can economize 1 slot. (a and c variable will be in the same slot)
 
-        Therefore there are 1 less used slot at the deployment. (So 20,000 gas saved)
+        - Therefore there are 1 less used slot at the deployment. (So 20,000 gas saved)
 
-        Moreover if you want to access the c variable, but the b variable is already accessed. It will count as a warm access (accessing a storage slot already accessed) so it will cost you 1000 instead of 2900 gas which is pretty significant.
+        - Moreover if you want to access the c variable, but the b variable is already accessed. It will count as a warm access (accessing a storage slot already accessed) so it will cost you 1000 instead of 2900 gas which is pretty significant.
 
-        If you don’t understand the storage, the documentation may help you: https://docs.soliditylang.org/en/v0.8.13/internals/layout_in_storage.html
+        - If you don’t understand the storage, the documentation may help you: https://docs.soliditylang.org/en/v0.8.13/internals/layout_in_storage.html
 
     ★ B3 Use the optimizer (Saved gas : 10–50% on deployment & call):
     -----------------------------------------------------------------
 
-        You can use the solidity built-in optimizer.
-        This is a very simple way to save a lot of gas without learning any new concepts. You need to check the “enable optimization” checkbox under Advance configuration section.
+        - You can use the solidity built-in optimizer.
+        - This is a very simple way to save a lot of gas without learning any new concepts. You need to check the “enable optimization” checkbox under Advance configuration section.
 
-        A value near to 1 will optimize gas cost, but a value near to the max (2³²-1) will optimize calls to the function.In most of the cases you can use the default value (200)
+        - A value near to 1 will optimize gas cost, but a value near to the max (2³²-1) will optimize calls to the function.In most of the cases you can use the default value (200)
 
     ★ B4 use mapping instead of array (5000 gas saved per value):
     --------------------------------------------------------------
 
-        Mappings are usually less expensive than arrays, but you can’t iterate over them.
+        - Mappings are usually less expensive than arrays, but you can’t iterate over them.
 
                 mapping(unit => unit) map;
                 unit[] map2;
@@ -157,35 +158,35 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ B5: Use require instead of assert:
     -------------------------------------
 
-        Assert should NOT be used by other means than testing purposes. (because when the assertion fails, gas is NOT refunded contrary to require)
+        - Assert should NOT be used by other means than testing purposes. (because when the assertion fails, gas is NOT refunded contrary to require)
     
     ★ B6: use self destruct (save up to 24000 gas):
     ------------------------------------------------
 
-        selfdestruct() function destroys the smart contract and refunds 24000 gas.
-        In a more complex transaction like deploying another smart contract, you can call selfdestruct() on the smart contract to economize some gas.
+        - selfdestruct() function destroys the smart contract and refunds 24000 gas.
+        - In a more complex transaction like deploying another smart contract, you can call selfdestruct() on the smart contract to economize some gas.
 
     ★ B7: Make fewer external calls (amount saved: variable):
     ---------------------------------------------------------
 
-        Make a call to another contract only when you’re obligated to do so.
+        - Make a call to another contract only when you’re obligated to do so.
 
     ★ B8: Look for dead code (saves a variable amount of gas on deployment):
     ------------------------------------------------------------------------
 
-        Sometimes, developers forget to remove useless code like:
+        - Sometimes, developers forget to remove useless code like:
                     require(a == 0)
                     if (a == 0) {
                         return true;
                     } else {
                         return false
                     }
-        This is a dump example because it shows you that some devs can forget to remove useless parts.
+        - This is a dump example because it shows you that some devs can forget to remove useless parts.
 
     ★ B9 use immutable variables (saves 15000 gas on deployment)":
     --------------------------------------------------------------
 
-        Use immutable storage variables whenever it’s possible.
+        - Use immutable storage variables whenever it’s possible.
 
             contract not_optimised{
                 unit256 public a;
@@ -207,7 +208,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ B10: storing data in events (up to 20 000 gas saved on function call):
     ------------------------------------------------------------------------
 
-        If you don’t need to access the data onchain in solidity, you can store it using events.
+        - If you don’t need to access the data onchain in solidity, you can store it using events.
 
                 address store;
                 event Store(uint256 indexed key, address indexed data);
@@ -225,12 +226,13 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
 * Tier C:
 ---------
-    These tips can save you a fair amount of gas and cost you nothing.
+
+    - These tips can save you a fair amount of gas and cost you nothing.
 
     ★ C1 Use static size type in solidity (about 50 gas saved):
     ------------------------------------------------------------
 
-        Static size types (like bool, uint256, bytes5) are cheaper than dynamic size type (like string or bytes)
+        - Static size types (like bool, uint256, bytes5) are cheaper than dynamic size type (like string or bytes)
 
                 function optimized() external{
                     bytes4 str = 0x61626364;
@@ -246,7 +248,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ C2 Cold access vs warm access (70 saved gas):
     ------------------------------------------------
 
-        Don’t access the same storage variable twice.
+        - Don’t access the same storage variable twice.
 
                 uint256 a = 100;
                 function optimized() external{
@@ -279,8 +281,8 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ C4: Use Indexed events (62 gas saved on function call per topic):
     -------------------------------------------------------------------
 
-        You can mark each event as indexed as bellow:
-        Indexed events allow events to be searched more easily.
+        - You can mark each event as indexed as bellow:
+        - Indexed events allow events to be searched more easily.
 
                 event Test1(address a, address b);
                 event Test2(address indexed a, address indexed b);
@@ -295,30 +297,30 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
                     emit Test2(0x..,0x..)
                 }
 
-        Here the function optimised() uses 135 less gas than not_optimised().
+        - Here the function optimised() uses 135 less gas than not_optimised().
 
     ★ C5: Changing the order of calls (20–2000 saved gas per call):
     ---------------------------------------------------------------
 
-        We can call every smart contract, you supply in msg.data the signature of the function. (the first 4 bytes of the function keccak256 hash).
+        - We can call every smart contract, you supply in msg.data the signature of the function. (the first 4 bytes of the function keccak256 hash).
 
-        Firstly, the EVM will do a “switch” of this signature, to see which function to execute.
+        - Firstly, the EVM will do a “switch” of this signature, to see which function to execute.
 
-        switch(msg.data[0:4]) { // compare to signature
-            case 0x01234567: go to functionA;
-            case 0x11111111: go to functionB; // cost 22 more gas..
-            case 0x4913aaaa: go to functionC; // cost 22+22 more gas...
-            ...
-            }
+                        switch(msg.data[0:4]) { // compare to signature
+                            case 0x01234567: go to functionA;
+                            case 0x11111111: go to functionB; // cost 22 more gas..
+                            case 0x4913aaaa: go to functionC; // cost 22+22 more gas...
+                            ...
+                            }
 
-        As comparing to signature computation use a bit of gas (22 gas), you need to place the most called function in the first place of the switch() by assuring that the signature is in the first place (by changing its name)
+        - As comparing to signature computation use a bit of gas (22 gas), you need to place the most called function in the first place of the switch() by assuring that the signature is in the first place (by changing its name)
 
-        You can learn more about this par is my reversing EVM articles: https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d
+        - You can learn more about this par is my reversing EVM articles: https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d
 
     ★ C6 use i++ instead of i = i+1 (62 gas saved on each call):
     ------------------------------------------------------------
 
-        This sounds like a joke, but it seems to work.:
+        - This sounds like a joke, but it seems to work.:
 
             function not_optimized() external{
                     uint i = 10;
@@ -335,7 +337,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ C7: Use uint256 instead of uintXX on storage (55 gas saved per call):
     -----------------------------------------------------------------------
 
-        To write/access data on storage, the EVM uses 32 bytes (= 256 bits slots), by using smaller types than uint256, the EVM needs to perform additional operations to assure the conversion.So better to use uint256 instead of uint8 for storing data.
+        - To write/access data on storage, the EVM uses 32 bytes (= 256 bits slots), by using smaller types than uint256, the EVM needs to perform additional operations to assure the conversion.So better to use uint256 instead of uint8 for storing data.
 
                 uint256 balance;
                 uint8 balance2;
@@ -351,7 +353,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ C8: Create a custom error (24 gas saved per call):
     ----------------------------------------------------
 
-        You can create a custom error on solidity, and revert with it like below.
+        - You can create a custom error on solidity, and revert with it like below.
 
                 error err(string test);
                 function not_optimized() external{
@@ -381,23 +383,23 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
                     (i,j) = (j,i);
                 }
 
-        We put it on the C tier because the notation is way more readable.
         - not_optimised() function gas usage: 21241 gas
         - optimised() function gas usage: 21236 gas
+        - We put it on the C tier because the notation is way more readable.
 
 * Tier D: : (Useless/harmful)
 ------------------------------
 
-    These optimizing gas tips are useless, don’t lose your time for saving a low amount of gas it will be shadowed anyway by the 21000 gas transaction.
+    - These optimizing gas tips are useless, don’t lose your time for saving a low amount of gas it will be shadowed anyway by the 21000 gas transaction.
 
     ★ D1: using unchecked (gas saved: 150/operation):
     --------------------------------------------------
 
-        Since solidity 0.8.0, operations like + * / — are checked every time if there is an overflow/underflow.
+        - Since solidity 0.8.0, operations like + * / — are checked every time if there is an overflow/underflow.
 
-        But it cost a little bit of gas to verify if there is an overflow/underflow.
+        - But it cost a little bit of gas to verify if there is an overflow/underflow.
 
-        Unless you are doing a lot of operations in a single function call (like in for loops), you should NOT use unchecked{}.
+        - Unless you are doing a lot of operations in a single function call (like in for loops), you should NOT use unchecked{}.
 
                 function not_optimized() external{
                    uint i = 10 ;
@@ -417,28 +419,28 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ D2 changing and optimizing the byte-code yourself:
     ----------------------------------------------------
 
-        Don’t do this unless you have a good reason to do so, some of the functions may end up with undefined behavior and security issues.
-        Use the optimizer instead or implement a very strict testing policy.
+        - Don’t do this unless you have a good reason to do so, some of the functions may end up with undefined behavior and security issues.
+        - Use the optimizer instead or implement a very strict testing policy.
 
     ★ D3 Delete Errors string messages (about 78.125 gas saved on deployment cost per characters):
     -----------------------------------------------------------------------------------------------
 
-        Don’t do it, the code may be harder to debug for you and for users.
-        For example, someone can replace:
+        - Don’t do it, the code may be harder to debug for you and for users.
+        - For example, someone can replace:
 
-        require(account != address(0), "ERC20: mint to the zero address");
-        To:
-         require(account != address(0))
+                        require(account != address(0), "ERC20: mint to the zero address");
+                    To:-
+                        require(account != address(0))
 
     ★ D4 using low level assembly (gas saved: variable):
     ----------------------------------------------------
 
-        If you don't know what you’re doing, DON’T do solidity assembly. You will end up having a lot more chances to have a security hole on your contract for a marginal saved gas amount.
+        - If you don't know what you’re doing, DON’T do solidity assembly. You will end up having a lot more chances to have a security hole on your contract for a marginal saved gas amount.
 
     ★ D5 use external instead of public:
     ------------------------------------
 
-        Surprisingly they are not any difference between external and public functions
+        - Surprisingly they are not any difference between external and public functions
 
                 function not_optimized()  public returns (uint){
                    return 777;
@@ -453,11 +455,11 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ D6 Use left shift instead of multiplication >> (150 saved gas):
     -----------------------------------------------------------------
          
-         Shifting binary data n times to the left results in multiplying the data by 2^n. Here is an example:
-            00000001 = 1 dec
-            00000010 = 2 dec
-            00000100 = 4 dec
-            00001000 = 8 dec
+         - Shifting binary data n times to the left results in multiplying the data by 2^n. Here is an example:
+                00000001 = 1 dec
+                00000010 = 2 dec
+                00000100 = 4 dec
+                00001000 = 8 dec
 
                 function not_optimized()  external returns (uint){
                    uint a = 5;
@@ -472,23 +474,23 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
         - not_optimised() function gas usage: 21615 gas
         - optimised() function gas usage: 21436 gas
-        Gains are not bad, but the >> operator doesn't check for an overflow.
+        - Gains are not bad, but the >> operator doesn't check for an overflow.
 
     ★ D7: Delete metadata hash (3000–5000 gas on deployment):
     ---------------------------------------------------------
 
-        On every smart contract byte code a “hash” is appended in the end.
-        This is the hash of all the metadata of the smart contract. (Including abi, comments, code…)
+        - On every smart contract byte code a “hash” is appended in the end.
+        - This is the hash of all the metadata of the smart contract. (Including abi, comments, code…)
 
-        As the metadata hash is 32 bytes in length, it can save you a bunch of gas.
+        - As the metadata hash is 32 bytes in length, it can save you a bunch of gas.
 
-        But this is quite hard to do, because you have to do it by hand.
-        So it may be dangerous if executed badly.
+        - But this is quite hard to do, because you have to do it by hand.
+        - So it may be dangerous if executed badly.
 
     ★ D8 Add payable to every function (24 gas saved per call):
     -----------------------------------------------------------
 
-        Adding payable to a function, removes the verification on msg.value. Therefore some gas is saved.
+        - Adding payable to a function, removes the verification on msg.value. Therefore some gas is saved.
 
                 function optimized() external payable{
 
@@ -503,11 +505,11 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     ★ D9 doing the important work offchain.:
     -----------------------------------------
 
-        Be careful about the work you’re doing off-chain (Like in JS).
+        - Be careful about the work you’re doing off-chain (Like in JS).
 
-        For example, you can’t do security verification off-chain in the website front end, this is very dangerous as anyone may be able to change the JS code in the browser and send bad input to the smart contract.
+        - For example, you can’t do security verification off-chain in the website front end, this is very dangerous as anyone may be able to change the JS code in the browser and send bad input to the smart contract.
 
-        ALWAYS DO THE SECURITY VERIFICATION ON-CHAIN.!!!
+        - ALWAYS DO THE SECURITY VERIFICATION ON-CHAIN.!!!
 
 
 * Some other gas saving techniques:-
