@@ -23,7 +23,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
         ●	To minimize gas costs you need to minimize the size of a smart contract and the cost of the constructor.
 
-    2. Optimize every function call:
+    B). Optimize every function call:
     ---------------------------------
 
         ●	You can also optimize the cost of calling every function in your smart contract.
