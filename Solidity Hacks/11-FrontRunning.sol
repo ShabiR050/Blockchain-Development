@@ -1,5 +1,9 @@
 /**
- * Transactions take some time before they are mined. An attacker can watch the transaction pool and send a transaction, have it included in a block before the original transaction. This mechanism can be abused to re-order transactions to the attacker's advantage.
+ * Transactions need some time to process before they can be mined. In order to send a transaction, an attacker may keep an eye on the transaction pool and ensure that the transaction is included in a block before the original transaction. Using this approach, an attacker can manipulate the sequencing of transactions to his or her own advantage.
+
+* In blockchain, front-running refers to an attack in which a bot preempts a normal transaction while it is waiting to be packaged by setting a higher gas cost in order to complete a transaction at a preferential rate before the attacked transaction occurs. Front-running attacks are most common in the cryptocurrency space. Essentially, a mempool is a collection of Ethereum transactions that have been broadcast to the network and are currently awaiting packaging into blocks. It serves as the foundation for the deployment of front-running strategies. In the Mempool, the front-running robot continuously scans transactions in order to identify targets that can be attacked and analyses and finds targets that can be attacked. It is seen in the image below that a Mempool browser is available, which allows you to subscribe to transactions in Mempool and view all of the details of those transactions by applying various filters.
+-----------------or--------------------
+* Transactions take some time before they are mined. An attacker can watch the transaction pool and send a transaction, have it included in a block before the original transaction. This mechanism can be abused to re-order transactions to the attacker's advantage.
  */
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
@@ -192,3 +196,4 @@ contract SecuredFindThisHash {
         }
     }
 }
+//Use of preventative techniques such as the commit-reveal scheme and submarine dispatch can help eliminate the front running attack   

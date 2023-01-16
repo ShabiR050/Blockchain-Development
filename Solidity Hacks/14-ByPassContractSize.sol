@@ -1,4 +1,12 @@
 /**
+ * Bypassing the Solidity contract size check, you can take control of a smart contract. Some business owners prefer that other contracts do not connect with theirs in order to provide them with added security. Owners can prevent this interaction by implementing a check on the account code size, which prevents functions from being executed. It is determined by this code size check whether or not the address communicating with the contract contains code, and if it does, then the function is not performed. Unfortunately, a developer can use this code size check to their advantage.
+
+* Vulnerability in the size check of the solidity code
+If an address contains a Solidity smart contract, you can tell if it is one by looking at the size of the code that is stored at the address. The assembly function extcodesize is used in Solidity functions to determine the size of the code at a specific location in the code. Smart contracts are defined as addresses where the code size is greater than 0.
+
+* To pwn a contract that contains Assembly extcodesize, simply include a function in the attacking contract’s constructor. During contract creation when the constructor is executed there is no code yet so the code size will be 0. The constructor will run the function and bypass the target contract’s extcodesize check.
+
+ * 
  * If an address is a contract then the size of code stored at the address will be greater than 0 right?
 
 Let's see how we can create a contract with code size returned by extcodesize equal to 0.

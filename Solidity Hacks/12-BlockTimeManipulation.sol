@@ -1,8 +1,17 @@
 /**
- * block.timestamp can be manipulated by miners with the following constraints
+ * 
+ * A miner has the ability to manipulate the block timestamp, which they can exploit to their advantage in order to attack a smart contract on the blockchain. In this tutorial, we'll go through how a miner can manipulate the Ethereum system in order to take Ether from a Solidity smart contract, and we'll do it with Solidity.
 
-it cannot be stamped with an earlier time than its parent
-it cannot be too far in the future
+ * Blocks contain a timestamp field in the block header, which is set by the miner and can be altered to anything the miner desires at any time (with some restriction). It is necessary for a miner to win the next block in order to set a block timestamp, and they must also adhere to the following time constraints:
+
+ * The timestamp for the next block is immediately following the timestamp for the previous block.
+ * The timestamp cannot be more than a few days in the future.
+ * If a miner wins a block, he or she has the ability to subtly alter the block timestamp to their favor.
+
+ * block.timestamp can be manipulated by miners with the following constraints:
+
+ - it cannot be stamped with an earlier time than its parent
+ - it cannot be too far in the future
  */
 
 // SPDX-License-Identifier: MIT

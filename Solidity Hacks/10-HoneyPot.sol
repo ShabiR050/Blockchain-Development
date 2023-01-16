@@ -1,5 +1,13 @@
 /**
  * A honeypot is a trap to catch hackers.
+ * Network-attached systems (honeypots) are a type of decoy set up to catch hackers in the act of trying to break into computer networks and steal sensitive data. A honeypot's job is to pose as a high-value asset on the internet in order to entice attackers, gather data, and alert security personnel to any attempts by unauthorized users to get access to the honeypot.
+ 
+* Hardened operating systems (OSes) are typically used by honeypot systems in order to reduce their vulnerability to threats. Typically, they are designed to appear vulnerable to attackers. WannaCry ransomware may employ the Server Message Block (SMB) protocol, so a honeypot system could appear as if it is an enterprise database server storing customer data in response.
+
+* Honeypots are commonly used by large corporations and cybersecurity research organizations to detect and prevent attacks from APT actors. When it comes to protecting major enterprises and cybersecurity researchers, honeypots are an essential tool.
+
+* There are many factors that contribute to the high expense of running a honeypot, including the need for specific expertise to develop and administer a system that appears to expose an organization's network resources while still protecting production systems.
+
 
 Vulnerability
 Combining two exploits, reentrancy and hiding malicious code, we can build a contract

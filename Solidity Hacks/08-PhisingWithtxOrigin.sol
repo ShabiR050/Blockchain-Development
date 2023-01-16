@@ -2,6 +2,8 @@
  * What's the difference between msg.sender and tx.origin?
 If contract A calls B, and B calls C, in C msg.sender is B and tx.origin is A.
 
+Contracts can trick their owners into calling functions that they shouldn't be able to call, and this can be used to commit fraud.
+
 Vulnerability
 A malicious contract can deceive the owner of a contract into calling a function that only the owner should be able to call.
  */

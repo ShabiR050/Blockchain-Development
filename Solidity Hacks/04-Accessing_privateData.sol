@@ -3,6 +3,11 @@
 All data on a smart contract can be read.
 
 Let's see how we can read private data. In the process you will learn how Solidity stores state variables.
+
+A smart contract's data can be read in its entirety.
+
+Let us investigate how private data can be accessed. You'll discover how Solidity keeps track of state variables along the way.
+
  */
 
 // SPDX-License-Identifier: MIT
@@ -115,4 +120,8 @@ web3.utils.soliditySha3({ type: "uint", value: 1 }, {type: "uint", value: 7})
 user 1
 web3.eth.getStorageAt("0x534E4Ce0ffF779513793cfd70308AF195827BD31", "0xb39221ace053465ec3453ce2b36430bd138b997ecea25c1043da0c366812b828", console.log)
 web3.eth.getStorageAt("0x534E4Ce0ffF779513793cfd70308AF195827BD31", "0xb39221ace053465ec3453ce2b36430bd138b997ecea25c1043da0c366812b829", console.log)
+
+Preventative Techniques
+●	Don't store sensitive information on the blockchain.
+
 */
