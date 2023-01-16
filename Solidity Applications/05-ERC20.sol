@@ -1,4 +1,22 @@
 /**
+ * Ethereum, a famous cryptocurrency and blockchain system, is built on the use of tokens, which may be purchased, sold, or exchanged on the Ethereum exchange. Ethereum was first introduced in 2015, and since then it has grown to become one of the most important factors in the rise of cryptocurrency popularity. When used in the Ethereum system, tokens can represent a wide variety of digital assets, including vouchers, IOUs, and even physical, actual goods in the real world. Ethereum tokens, in their most basic form, are smart contracts that make use of the Ethereum network.
+
+
+* The ERC-20 token is considered to be one of the most important Ethereum tokens. This standard has emerged as the technical standard for token implementation on the Ethereum blockchain; it is used for all smart contracts on the blockchain, and it specifies a set of criteria that all Ethereum-based tokens must follow in order to be considered valid.
+
+* ERC-20 is similar to bitcoin, Litecoin, and any other cryptocurrency in that it is a blockchain-based asset that has value and can be transmitted and received; however, ERC-20 tokens are not a cryptocurrency in the traditional sense. The key distinction between ERC-20 tokens and other cryptographic tokens is that they are released on the Ethereum network rather than on their own blockchain.
+
+ERC-20 establishes a standardized set of rules.
+
+* As of March 24, 2022, there are around 508,074 ERC-20-compatible tokens on Ethereum's main network, according to CoinMarketCap.
+2 The ERC-20 standard is critical because it establishes a set of rules that all Ethereum tokens must follow in order to function properly. Some of these regulations govern how tokens can be moved, how transactions are approved, how users can access information about a token, and the overall number of tokens available for circulation.
+
+* As a result, this special token standard provides developers of all kinds with the ability to precisely predict how new tokens will function inside the broader Ethereum system. For developers, this simplifies the process at hand; they can proceed with their work confident that each and every new project will not need to be rewritten every time a new token is published, as long as the token complies with the rules. This compliance is also required since it assures that the numerous different tokens created on Ethereum are compatible with one another.
+
+* Unfortunately, the vast majority of token developers have failed to comply with ERC-20 guidelines, resulting in the fact that the vast majority of tokens issued through Ethereum initial coin offers (ICOs) are not ERC-20 compliant.
+
+* A large number of well-known digital currencies, such as Maker (MKR), Basic Attention Token (BAT), Augur (REP), and OmiseGO (OMG), are built on the ERC-20 standard (OMG). If you intend to purchase any digital currency that has been released as an ERC-20 token, you must also have a wallet that is compatible with these tokens in order to complete the transaction. The fact that ERC-20 tokens are so popular means that there are many different wallet alternatives to choose from.
+
  * Any contract that follow the ERC20 standard is a ERC20 token.
 
 ERC20 tokens provide functionalities to
@@ -8,6 +26,7 @@ ERC20 tokens provide functionalities to
 Here is the interface for ERC20.
  */
 
+//ERC20 Interface:-->
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
@@ -112,6 +131,13 @@ contract MyToken is ERC20 {
 }
 
 /**
+ * Here is an example contract, TokenSwap, that can be used to trade one ERC20 token for another in the Ethereum blockchain.
+
+* This contract will trade tokens by using the swap function,which will transfer the token's value from the sender to the recipient.
+
+* In order for transferFrom to be successful, the sender must have more tokens in their balance than the maximum number of tokens allowed. TokenSwap can withdraw a quantity of tokens by calling approve first, then calling transfer after TokenSwap has called transfer. 
+
+ * 
  * Contract to swap tokens
 Here is an example contract, TokenSwap, to trade one ERC20 token for another.
 
@@ -192,3 +218,6 @@ contract TokenSwap {
         require(sent, "Token transfer failed");
     }
 }
+
+//To implement the token swap, execute the following function call:
+transferFrom(address sender, address recipient, uint256 amount)

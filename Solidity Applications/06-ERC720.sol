@@ -1,3 +1,17 @@
+/**
+ * What is a Non-Fungible Token, and how does it work?
+
+* A Non-Fungible Token (NFT) is a unique identifier that can be used to identify anything or someone. It is ideal for usage on platforms that provide collectible objects, access keys, lottery tickets, numbered seats for concerts and sporting events, among other things.. This unique sort of Token has incredible potential, and as a result, it demands a legitimate Standard. The ERC-721 was created to address this issue.
+
+What exactly is ERC-721?
+
+* To put it another way, the ERC-721 establishes a standard for NFT, which means that this sort of Token is distinct and can have a different value than another Token from the same Smart Contract, either owing to its age, rarity, or even something else, such as its visual appearance. What's that, a visual?
+
+* Yes! Because all NFTs have an uint256 variable named tokenId, the pair contract address, uint256 tokenId, and uint256 tokenId must be globally unique for any ERC-721 Contract. However, a decentralized application can include a "converter" that takes the tokenId as input and returns an image of anything interesting, such as zombies, weapons, abilities or adorable kittens.
+
+The following code implements ERC721 token standard in Solidity:
+
+ */
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.6;
 
@@ -238,3 +252,14 @@ contract MyNFT is ERC721 {
         _burn(id);
     }
 }
+
+library Address {
+    function isContract(address account) internal view returns (bool) {
+        uint256 size;
+        assembly {
+            size := extcodesize(account)
+        }
+        return size > 0;
+    }
+}
+
