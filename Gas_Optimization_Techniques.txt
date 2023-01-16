@@ -79,7 +79,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     - The best website which describes how much each opcode is https://www.evm.codes/, it’s very well explained.
     - If you know that, you’ll better understand solidity and you’ll get a “better” intuition of how much each line of code costs you.
 
-    ★ A2 Use view the modifier:-
+    ★ A2: Use view the modifier:-
     -----------------------------
 
         function getBalance() external view {
@@ -99,12 +99,12 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
         ●	Calling optimized() costs more than not_optimized() with the same code (22 more gas), so I will subtract 22 gas on each call to optimized() function.
 
-    ★ B1 Batching operations (Saved gas: 21000 gas * batched transactions):
+    ★ B1: Batching operations (Saved gas: 21000 gas * batched transactions):
     -----------------------------------------------------------------------
 
         - Submitting a transaction alone on the blockchain costs a lot of gas (21000 gas to be precise), so if you can find a way to batch transactions for your users, it can save you a good amount of gas.
 
-    ★ B2 change orders of storage slot (20000 gas saved at deployment):
+    ★ B2: change orders of storage slot (20000 gas saved at deployment):
     --------------------------------------------------------------------
 
         - Ethereum storage is composed of slots of 32 bytes, the problem is that writing is expensive. (Up to 20000 gas using “cold” writing)
@@ -128,7 +128,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
         - If you don’t understand the storage, the documentation may help you: https://docs.soliditylang.org/en/v0.8.13/internals/layout_in_storage.html
 
-    ★ B3 Use the optimizer (Saved gas : 10–50% on deployment & call):
+    ★ B3: Use the optimizer (Saved gas : 10–50% on deployment & call):
     -----------------------------------------------------------------
 
         - You can use the solidity built-in optimizer.
@@ -136,7 +136,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
         - A value near to 1 will optimize gas cost, but a value near to the max (2³²-1) will optimize calls to the function.In most of the cases you can use the default value (200)
 
-    ★ B4 use mapping instead of array (5000 gas saved per value):
+    ★ B4: use mapping instead of array (5000 gas saved per value):
     --------------------------------------------------------------
 
         - Mappings are usually less expensive than arrays, but you can’t iterate over them.
@@ -183,7 +183,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
                     }
         - This is a dump example because it shows you that some devs can forget to remove useless parts.
 
-    ★ B9 use immutable variables (saves 15000 gas on deployment)":
+    ★ B9: use immutable variables (saves 15000 gas on deployment)":
     --------------------------------------------------------------
 
         - Use immutable storage variables whenever it’s possible.
@@ -229,7 +229,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
     - These tips can save you a fair amount of gas and cost you nothing.
 
-    ★ C1 Use static size type in solidity (about 50 gas saved):
+    ★ C1: Use static size type in solidity (about 50 gas saved):
     ------------------------------------------------------------
 
         - Static size types (like bool, uint256, bytes5) are cheaper than dynamic size type (like string or bytes)
@@ -245,7 +245,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
         -  not_optimised() function gas usage: 21255 gas
         -  optimised() function gas usage: 21227 gas
 
-    ★ C2 Cold access vs warm access (70 saved gas):
+    ★ C2: Cold access vs warm access (70 saved gas):
     ------------------------------------------------
 
         - Don’t access the same storage variable twice.
@@ -317,7 +317,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
 
         - You can learn more about this par is my reversing EVM articles: https://trustchain.medium.com/reversing-and-debugging-evm-smart-contracts-392fdadef32d
 
-    ★ C6 use i++ instead of i = i+1 (62 gas saved on each call):
+    ★ C6: use i++ instead of i = i+1 (62 gas saved on each call):
     ------------------------------------------------------------
 
         - This sounds like a joke, but it seems to work.:
@@ -416,13 +416,13 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
         - not_optimised() function gas usage: 21419 gas
         - optimised() function gas usage: 21253 gas
 
-    ★ D2 changing and optimizing the byte-code yourself:
+    ★ D2: changing and optimizing the byte-code yourself:
     ----------------------------------------------------
 
         - Don’t do this unless you have a good reason to do so, some of the functions may end up with undefined behavior and security issues.
         - Use the optimizer instead or implement a very strict testing policy.
 
-    ★ D3 Delete Errors string messages (about 78.125 gas saved on deployment cost per characters):
+    ★ D3: Delete Errors string messages (about 78.125 gas saved on deployment cost per characters):
     -----------------------------------------------------------------------------------------------
 
         - Don’t do it, the code may be harder to debug for you and for users.
@@ -432,12 +432,12 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
                     To:-
                         require(account != address(0))
 
-    ★ D4 using low level assembly (gas saved: variable):
+    ★ D4: using low level assembly (gas saved: variable):
     ----------------------------------------------------
 
         - If you don't know what you’re doing, DON’T do solidity assembly. You will end up having a lot more chances to have a security hole on your contract for a marginal saved gas amount.
 
-    ★ D5 use external instead of public:
+    ★ D5: use external instead of public:
     ------------------------------------
 
         - Surprisingly they are not any difference between external and public functions
@@ -452,7 +452,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
         - not_optimised() function gas usage: 21401 gas
         - optimised() function gas usage: 21379 gas (22)
 
-    ★ D6 Use left shift instead of multiplication >> (150 saved gas):
+    ★ D6: Use left shift instead of multiplication >> (150 saved gas):
     -----------------------------------------------------------------
          
          - Shifting binary data n times to the left results in multiplying the data by 2^n. Here is an example:
@@ -487,7 +487,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
         - But this is quite hard to do, because you have to do it by hand.
         - So it may be dangerous if executed badly.
 
-    ★ D8 Add payable to every function (24 gas saved per call):
+    ★ D8: Add payable to every function (24 gas saved per call):
     -----------------------------------------------------------
 
         - Adding payable to a function, removes the verification on msg.value. Therefore some gas is saved.
@@ -502,7 +502,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
         - not_optimised() function gas usage: 21186 gas
         - optimised() function gas usage: 21184 gas
 
-    ★ D9 doing the important work offchain.:
+    ★ D9: doing the important work offchain.:
     -----------------------------------------
 
         - Be careful about the work you’re doing off-chain (Like in JS).
