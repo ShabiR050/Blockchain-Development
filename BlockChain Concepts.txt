@@ -16,13 +16,13 @@ Two categories of blockchain tokens:-
 Different kinds of tokens are available in blockchain, but they're usually in one of two categories:
 
 Fungible. Fungible tokens are:
-* Equivalent
-* Exchangeable
-* Valued by how many you have
+   * Equivalent
+   * Exchangeable
+   * Valued by how many you have
 Non-fungible. Non-fungible tokens are:
-* Unique
-* Distinct
-* Valued by which ones you have
+   * Unique
+   * Distinct
+   * Valued by which ones you have
 
 ----------------------
 POW (Proof of Work):->
@@ -72,6 +72,7 @@ POW (Proof of Work):->
 ----------------------
 POS (Proof of Stake):-
 ----------------------
+
 * Ethereum 2.0: POS (Beacon Chain): POS based Ethereum blockchain (Serenity):
 
     * POS consensus
@@ -159,6 +160,7 @@ POS (Proof of Stake):-
  
  * Drawbacks of Ethereum:
 ---------------------------
+
         - Heavy network congestion , leads to high Gas cost.
         - Scalability issues i.e 13-15 TPS.
     Solution:
@@ -168,6 +170,7 @@ POS (Proof of Stake):-
 ------------
 * Polygon:
 ------------
+
     Polygon: Layer 2 solution.Offchian computation . Dencentralised.
         - Scalability issues solved. High throughpu (High TPS).
         - Enhance the capability of Ethereum.
