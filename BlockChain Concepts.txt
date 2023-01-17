@@ -154,7 +154,75 @@ POS (Proof of Stake):-
 
         * There is one beacon chain and 64 shard chains. Tasks will be divided among 64 shard chains. The beacon chain will be referenced by all shard chains. The beacon chain is able to read the data from each and every shard chain. The unique properties of shard chains will be stored in beacon chains in the form of hashes. Tasks are being assigned to the shred chain by the beacon chain.
  
- 
+ * Drawbacks of Ethereum:
+        - Heavy network congestion , leads to high Gas cost.
+        - Scalability issues i.e 13-15 TPS.
+    Solution:
+        - Layer 2 scaling solution. It uses POS Consensus. Certain Gas price whenever there is a state change. Also has Some network throughput.(TPS).
+        - Layer 2 blockchain : They are of ERC20 type token. EVM compatible.
+
+    Polygon: Layer 2 solution.Offchian computation . Dencentralised.
+        - Scalability issues solved. High throughpu (High TPS).
+        - Enhance the capability of Ethereum.
+        - Can achieve 10000 TPS.
+        - Provide SDK. Mobile apps can build using this.
+        - Matic js : to build Polygon apps using JS.
+        - Polygon mainnet and mumbai testnet.
+
+* Architecture of Polygon:
+
+    - Polygon network divided into 3 Parts/Layers:
+        1)- Ethereum Mainnet. / BeaconChain. It has: (All the SC that polygon is using)
+                - Staking COntract , checkpoint contract and Reward Contract.
+                ⮃
+        2)- Heimdall (POS for Polygon) : <-(Polygon consensus layer).It contains POS mechanism. (2/3)
+                ⮃
+        3)- BOR layer. For adding new Blocks. (MATIC Chain = Native token for Polygon.)
+
+    - By default,polygon network blocks are proposed in BOR layer then consensus ll happens in the POS mechanism in Heimdall layer and then it ll be sent to ethereum layer.
+
+    - Polygon POS has different checkpoints. (1 block in BOR chain @ every 2 sec).
+
+    - Every block ll be having a blockhash. (1 block has around 100-200 TXN)
+
+    - Eg: 5 blocks producing different txn and connected to a checkpoint of POS polygon . Then the  block hashes of indivisual blocks ll combined to represent the merkel root hash for all block hashes.That 1 merkle root hash ll be posted to ethereum mainnet.So we ll have 1 hash to represent 600 transactions on mainnet.Finally after verifying the merkel root / txn, block ll be added to ethereum blockchain.Ethereum State ll only be changed by the final transaction by polygon not by indivisual blocks.
+
+    - Verify a particular transaction exists or not using the merkel root.
+
+    - BOR layer producing new blocks and keep adding them to Heildall layer on checkpoints.Checkpointing / snapshots of every blocks(Merkel Root) happens at every 10-20 minutes.i.e after every 20 min all proposed blocks added to Heildall layer on checkpoint.Validators from POS polygon choosen randomly to add these blocks from BOR networks.
+
+    - Need of polygon is to do most of the work offchain without the ethereum blockchain.Just to validate summery of trx , it is using ethereum.
+
+* Heildall Chain: (POS network , acting like BeaconChain)
+
+    - POS verification layer of polygon.it does the Checkpointing of BOR blocks/ Plasma blocks representation.  
+
+    - Checkpointing: Sending the Merkel root to Ethereum blockchain. And the polygon Smart contract that deployed on ethereum has all the logic to verify this 3 layer system.
+
+    - Staking contract is deloyed eth mainnet , it contains all the logic of how to propose new blocks, how to give voting rights to different validators, how to choose random validator and managing the checkpoints.Heimdall can make function call to staking SC on ETh blockchain.Polygon derives security from eth mainnet.
+
+    - Aggregation of blocks produce by BOR.verify Indivisual block hash and block signature.Once validated , it combined the blocks to generate root hash.
+
+    - Tendermint software need to install in order to become a validator.
+
+    - For every few blocks, 1 valiadtor ll do certain tasks:
+        - validate all blocks since last checkpoint.
+        - creates a merkel tree of block hashes.
+        - Final hash can be checkpointed and send to mainnet.
+        - polygon  ll do 1-1 mapping with mainnet.
+
+    ERC20 polygon <-> Eth mainnet.While mapping Equivalent amount of token that wanted to be added to mainnet, ll be burnt on polygon and then transfer to mainnet also viceversa.
+    
+    - Checkpoint importance/Task:
+    
+        - providing finality on root chain.
+        - providing proof of burn in withdrawal assets.
+        (how transfer of token happens in both chain). [ zkevm ]
+    
+
+    
+
+
  
  
  
