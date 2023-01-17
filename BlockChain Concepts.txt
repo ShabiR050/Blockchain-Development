@@ -24,7 +24,7 @@ Non-fungible. Non-fungible tokens are:
 * Distinct
 * Valued by which ones you have
 
-
+----------------------
 POW (Proof of Work):->
 ----------------------
 
@@ -69,7 +69,7 @@ POW (Proof of Work):->
     * Network Congestion (NC): dynamic gas price, i.e., Gwei. NC is high => Gwei high and alternate. Transactions in Dapps with high NC take longer to add to the blockchain.Block confirmation takes time. Blockchain adoption leads to increased network congestion.
 
 
-
+----------------------
 POS (Proof of Stake):-
 ----------------------
 * Ethereum 2.0: POS (Beacon Chain): POS based Ethereum blockchain (Serenity):
@@ -81,6 +81,7 @@ POS (Proof of Stake):-
 * There are no miners in POS. Validators, rather than miners, should be used at the POS. required 32 ETH to be a validator network. There are liquidity pools, or staking pools, in which groups of people invest money until they reach 32 ETH, etc., and become validators. For a limited time, 32 ETH will be locked, and the blockchain software will act as a validator. Dapps can be liquidity pools.
 
 * POS:-
+--------
 
     * 32 ETH are staked or locked in the Ethereum software. (Geth : GO implementation of the ETH, store private/public key.)
 
@@ -110,6 +111,7 @@ POS (Proof of Stake):-
                 * The amount of ETH staked was chosen as a validator based on probability.
 
             * POS committees: (128 committee members/attester)
+            --------------------------------------------------
 
                 * For every slot, there will be 1 proposer or validator (Randomly chosen to add blocks or transactions to the blockchain) and at least 128 committee members (they are also randomly chosen validators). So each of them also staked at least 32 ethers.
 
@@ -142,6 +144,7 @@ POS (Proof of Stake):-
                         * Committee members will run the transaction once again inside the slots to verify the signature of the transaction, i.e., the public key and private key. Once they verify the signature, they'll vote. (Match the signature with the proposer's signature.
 
         * Reward:-
+        -----------
 
             * Base reward = validator effective balance * 2^6 / SQRT(Effective Bal. of all active validators).
 
@@ -155,12 +158,16 @@ POS (Proof of Stake):-
         * There is one beacon chain and 64 shard chains. Tasks will be divided among 64 shard chains. The beacon chain will be referenced by all shard chains. The beacon chain is able to read the data from each and every shard chain. The unique properties of shard chains will be stored in beacon chains in the form of hashes. Tasks are being assigned to the shred chain by the beacon chain.
  
  * Drawbacks of Ethereum:
+---------------------------
         - Heavy network congestion , leads to high Gas cost.
         - Scalability issues i.e 13-15 TPS.
     Solution:
         - Layer 2 scaling solution. It uses POS Consensus. Certain Gas price whenever there is a state change. Also has Some network throughput.(TPS).
         - Layer 2 blockchain : They are of ERC20 type token. EVM compatible.
 
+------------
+* Polygon:
+------------
     Polygon: Layer 2 solution.Offchian computation . Dencentralised.
         - Scalability issues solved. High throughpu (High TPS).
         - Enhance the capability of Ethereum.
@@ -170,6 +177,7 @@ POS (Proof of Stake):-
         - Polygon mainnet and mumbai testnet.
 
 * Architecture of Polygon:
+---------------------------
 
     - Polygon network divided into 3 Parts/Layers:
         1)- Ethereum Mainnet. / BeaconChain. It has: (All the SC that polygon is using)
@@ -194,6 +202,7 @@ POS (Proof of Stake):-
     - Need of polygon is to do most of the work offchain without the ethereum blockchain.Just to validate summery of trx , it is using ethereum.
 
 * Heildall Chain: (POS network , acting like BeaconChain)
+-----------------
 
     - POS verification layer of polygon.it does the Checkpointing of BOR blocks/ Plasma blocks representation.  
 
@@ -214,7 +223,7 @@ POS (Proof of Stake):-
     ERC20 polygon <-> Eth mainnet.While mapping Equivalent amount of token that wanted to be added to mainnet, ll be burnt on polygon and then transfer to mainnet also viceversa.
     
     - Checkpoint importance/Task:
-    
+
         - providing finality on root chain.
         - providing proof of burn in withdrawal assets.
         (how transfer of token happens in both chain). [ zkevm ]
