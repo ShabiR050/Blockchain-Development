@@ -1,0 +1,408 @@
+----------
+Solidity :
+----------
+
+* Solidity is statically typed programming language.
+
+* Smart contracts are simply programs stored on blockchain that run when predefined conditions are met.Written in Solidity.
+
+* They typically are used to automate the execution of an agreement, so that all participants can be immediately certain of the outcome, without any intermediary's involvement or time loss.
+
+* ETHEREUM VIRTUAL MACHINE(EVM):
+The Ethereum Virtual Machine is the software platform that developers can use to create decentralized applications (DApps) on Ethereum. This virtual machine is where all Ethereum accounts and smart contracts live.
+VIRTUAL MACHINE
+
+* Before deploy smart contract, we need to compile solidity code to Bytecode for EVM(Ethereum Virtual Machine). You got two stuff after compiling solidity code:
+    - Bytecode/EVM code
+    - ABI(Application Binary Interface)
+
+* Bytecode is code EVM execute in blockchain network. ABI defines the actions you interact with smart contract. The actions in ABI mean the functions of smart contract.
+
+* Solidity Data Types:
+
+- Value Types: Value type variables store their own data. These are the basic data types provided by solidity. These types of variables are always passed by value. The variables are copied wherever they are used in function arguments or assignment. Value type data types in solidity are listed below:
+
+    • Boolean: This data type accepts only two values True or False.
+
+    • Integer: This data type is used to store integer values, int and uint are used to declare signed and unsigned integers respectively.
+
+    • Address: Address hold a 20-byte value which represents the size of an Ethereum address. An address can be used to get balance or to transfer a balance by balance and transfer method respectively.
+
+    • Bytes and Strings: Bytes are used to store a fixed-sized character set while the string is used to store the character set equal to or more than a byte. The length of bytes is from 1 to 32, while the string has a dynamic length. Byte has an advantage that it uses less gas, so better to use when we know the length of data.
+
+    • Enums: It is used to create user-defined data types, used to assign a name to an integral constant which makes the contract more readable, maintainable, and less prone to errors. Options of enums can be represented by unsigned integer values starting from 0.
+
+- Int Range : positive 2^(n-1)-1 to 2^(n-1)
+Uint Range: 2^n - 1
+
+* Solidity Variables:
+Solidity supports three types of variables:
+    • State Variables: - Variables whose values are permanently stored in a contract storage.
+    • Local Variables: - Variables whose values are present till function is executing.
+    • Global Variables: - Special variables exists in the global namespace used to get information about the blockchain.
+
+    // storage is done in 4 ways
+    // 1. Storage => Stored on Blockchain
+    // 2. Memory => the variables are stored have a lifetime
+    // 3. Stack => All variables declared in a function are
+    //             stored in a fixed size stack
+    // 4. Calldata => Similar to Memory, this variables have a
+    //               lifetime but are immutable
+
+
+Solidity is a statically typed language, which means that the state or local variable type needs to be specified during declaration. Each declared variable always have a default value based on its type. There is no concept of "undefined" or "null".
+
+* Block and Transaction Properties:
+
+    • blockhash(uint blockNumber) returns (bytes32): hash of the given block when blocknumber is one of the 256 most recent blocks; otherwise returns zero
+
+    • block.basefee (uint ): current block's base fee (EIP-3198 and EIP-1559)
+
+    • block.chainid (uint): current chain id
+
+    • block.coinbase (address payable): current block miner's address
+
+    • block.difficulty (uint): current block difficulty
+
+    • block.gaslimit (uint ): current block gaslimit
+
+    • block.number (uint ): current block number
+
+    • block.timestamp (uint ): current block timestamp as seconds since unix epoch
+
+    • gasleft() returns (uint256) : remaining gas
+
+    • msg.data(bytes calldata ): complete calldata
+
+    • msg.sender (address): sender of the message (current call)
+
+    • msg.sig (bytes4 ): first four bytes of the calldata (i.e. function • identifier)
+
+    • msg.value ( uint ): number of wei sent with the message
+
+    • tx.gasprice (uint ): gas price of the transaction
+
+    • tx.origin (address ): sender of the transaction (full call chain)
+
+* Members of Address Types:
+
+    • <address>.balance (uint256) : balance of the Address in Wei
+
+    • <address>.code (bytes memory ) : code at the Address (can be empty)
+
+    • <address>.codehash (bytes32) : the codehash of the Address
+
+    • <address payable>.transfer (uint256 amount) : send given amount of Wei to  Address, reverts on failure, forwards 2300 gas stipend, not adjustable
+
+    • <address payable>.send(uint256 amount) returns (bool) :send given amount of Wei to Address, returns false on failure, forwards 2300 gas stipend, not adjustable
+
+    • <address payable>.send(uint256 amount) returns (bool) : send given amount of Wei to Address, returns false on failure, forwards 2300 gas stipend, not adjustable
+
+    • <address>.call(bytes memory) returns (bool, bytes memory) : issue low-level CALL with the given payload, returns success condition and return data, forwards all available gas, adjustable
+
+    • <address>.delegatecall (bytes memory) returns (bool, bytes memory) : issue low-level DELEGATECALL with the given payload, returns success condition and return data, forwards all available gas, adjustable
+
+    • <address>.static call(bytes memory) returns (bool, bytes memory) : issue low-level STATICCALL with the given payload, returns success condition and return data, forwards all available gas, adjustable
+
+    https://docs.soliditylang.org/en/v0.8.10/units-and-global-variables.html#special-variables-and-functions
+
+* Ether units:
+    * 1 wei == 1
+    * 1 szabo == 1e12
+    * 1 finney == 1e15
+    * 1 ether == 1e18
+
+* Time units:
+    * 1 seconds == 1
+    * 1 minutes == 60 seconds
+    * 1 hours == 60 minutes
+    * 1 day == 24 hours
+    * 1 week == 7 days
+
+* So*dity Variable Scopes:
+
+    • Public: Public state variables can be accessed internally as well as via messages. For a public state variable, an automatic getter function is generated.
+
+    • Internal: Internal state variables can be accessed only internally from the current contract or contract deriving from it without using this.
+
+    • Private: Private state variables can be accessed only internally from the current contract they are defined not in the derived contract from it.
+
+* Storage vs Memory in Solidity : -
+
+Storage and Memory keywords in Solidity are analogous to Computer's hard drive and Computer's RAM. Much like RAM, Memory in Solidity is a temporary place to store data whereas Storage holds data between function calls. The Solidity Smart Contract can use any amount of memory during the execution but once the execution stops, the Memory is completely wiped off for the next execution. Whereas Storage on the other hand is persistent, each execution of the Smart contract has access to the data previously stored on the storage area.
+
+* Every transaction on Ethereum Virtual Machine costs us some amount of Gas. The lower the Gas consumption the better is your Solidity code. The Gas consumption of Memory is not very significant as compared to the gas consumption of Storage. Therefore, it is always better to use Memory for intermediate calculations and store the final result in Storage.
+    1. State variables and Local Variables of structs, array are always stored in storage by default.
+    2. Function arguments are in memory.
+    3. Whenever a new instance of an array is created using the keyword 'memory', a new copy of that variable is created. Changing the array value of the new instance does not affect the original array.
+
+* SPDX License Identifier:
+
+The source code of smart contracts may help build trust. The Solidity compiler advocates the use of machine-readable SPDX license IDs since making source code public inevitably raises copyright issues. Every source file should begin with the following license:
+
+        //SPDX-License: MIT
+
+●	The compiler does not check the license, but it does include it in the bytecode information.
+●	If you don't want to indicate a license or the code isn't open source, use UNLICENSED.
+●	Adding this remark does not relieve you of other licensing duties, such as mentioning a particular license header in each source file or the original copyright holder.
+●	The compiler recognises the comment anywhere in the file, although it is suggested towards the top.
+●	The SPDX website has further information on using SPDX license identification.
+
+* Pragmas:
+
+The first line of code in any Solidity file is Pragma.
+
+Pragma indicates the compiler version for the current Solidity file.
+Solidity is a new programming language that is always being improved. It releases a new version whenever a new feature or upgrade is added. The current version is 0.8.13 as of the time this document is written. Using the pragma directive, you may choose the compiler version and target your code as follows:
+
+        pragma solidity ^0.8.13; 
+
+* Structure of a Smart Contract:
+
+Solidity contracts are like classes in modern Object Oriented Programming languages. State variables ,Functions, Function Modifiers, Events, Errors, Struct and Enum Types may all be declared in a contract. Contracts may also inherit from other contracts.
+
+Libraries and interfaces are two types of special contracts.
+
+Solidity is used to construct smart contracts for Ethereum. EVMs use smart contracts to deploy and execute their code.
+
+A contract contains multiple constructs:
+
+●	State variables
+●	Structures
+●	Modifiers
+●	Declaratives
+●	Enumerations
+●	Functions
+
+A typical Smart Contract consists of all the preceding constructs.
+
+
+* Solidity Data Types:
+
+Solidity is a statically typed language, and each variable's (state and local) type must be declared. Complex kinds may be created by combining basic solidity types.
+
+
+The concept of “undefined” or “null” values does not exist in Solidity, but newly declared variables always have a default value dependent on its type. 
+
+
+The following are the various types in Solidity:-
+
+        ●●	Value Types
+        ●●	Reference Types
+        ●●	Mapping Types
+        ●●	Operators
+
+●●	Value Types:-
+
+The following types are also called value types because variables of these types will always be passed by value, i.e. they are always copied when they are used as function arguments or in assignments.
+
+
+Solidity value types consist of the following types:-
+
+        ●	Booleans
+        ●	Integers
+        ●	Addresses
+        ●	Contract types
+        ●	Bytes type
+        ●	String type
+        ●	Enums
+
+● Booleans:
+
+Default value = false;
+bool: The possible values are constants true and false.
+
+Boolean Operators:
+
+●	! (logical negation)
+●	&& (logical conjunction, “and”)
+●	|| (logical disjunction, “or”)
+●	== (equality)
+●	!= (inequality)
+
+
+The operators || and && apply the common short-circuiting rules. This means that in the expression f(x) || g(y), if f(x) evaluates to true, g(y) will not be evaluated even if it may have side-effects.
+
+        // SPDX-License-Identifier: MIT
+
+        pragma solidity ^0.8.1;
+
+        contract BooleanExample {
+            bool public myBool;
+
+            function setMyBool(bool _myBool) public {
+                myBool = _myBool;
+            }
+
+        }
+
+ ● Integers:
+
+Integer types in Solidity can be either unsigned or signed.
+
+Unsigned integers are referenced by the uint keyword.
+Unsigned integers can be assigned in steps of 8 bits upto 256 bits.
+
+The following are the different types of unsigned integers:
+
+        uint8 = 5;
+        uint16 = 100;
+        uint24 = 1000;
+        uint32 = 104833;
+        uint40 = 18348;
+        uint56 = 324234;
+        uint64 = 134243;
+        uint128 = 11334;
+        uint136 = 24;
+        uint256 = 100000;
+
+The default value for uint type is uint256 and it can store 2^256 values, and because it is unsigned , the maximum value it can store is 2^256-1(zero requires one space). 
+
+- Signed integers are referenced by the int keyword.
+- Signed integers can be assigned in steps of 8 bits upto 256 bits.
+
+- The following are the different types of signed integers:
+            int8 = 5;
+            int16 = -100;
+            int24 = -1000;
+            int32 = 104833;
+            int40 = -18348;
+            int56 = -324234;
+            int64 = 134243;
+            int128 = -11334;
+            int136 = 24;
+            int256 = -100000;
+- The default value for uint type is int256 and it can store 2^256 values, and because it is signed , it contains positive as well as negative values centered around zero.
+
+- The minimum and maximum values for int256 are -(2^256-1)/2 and (2^256-1)/2.
+
+
+● Addresses : 
+
+- The address type comes in two categories:
+
+- Address: A 20 byte value (size of an Ethereum address).
+
+- Address payable: The same as the address but with the extra members transfer and send
+
+- This difference is made because a simple address is not designed to receive Ether, for example because it is a smart contract that was not built to accept Ether.
+- Only address and contract-type expressions may be explicitly changed to address using the explicit conversion payable (...). This conversion is only permitted if the contract can receive Ether, i.e The contract has a receive or payable fallback method. Payable(0) is an exception to this rule.
+
+    address(address_name).call{gas: 1000000,value: 1 ether}
+    (abi.encodeWithSignature("register(string)", "MyName"));
+
+* call, delegatecall and staticcall:
+
+If you need to work with contracts that don't follow the ABI, or if you want to get more control over how they're written, the functions call, delegatecall, and staticcall are there. It's the same thing with each one. They all take one byte of memory and return the success condition (a bool) and the data that was returned (bytes memory). Abi's encode, encodePacked, encodeWithSelector, and encodeWithSignature functions can be used to encode data that is organized in a way that can be read.
+
+- Using the function delegatecall is similar; the difference is that just the code of the provided address is utilized, and all other characteristics (storage, balance, and so on) are obtained from the current contract, rather than the previous contract. In order to make use of library code that is contained in another contract, the delegatecall function must be called. The user must check that the arrangement of storage in both contracts is acceptable for the usage of delegatecall before proceeding with the implementation.
+
+- All of these functions are low-level functions, and they should only be used with extreme caution when necessary. To be more specific, any unknown contract may be malicious, and if you call it, you pass over power to that contract, which may in turn call back into your contract, so be prepared for changes to your state variables when the call is completed. Contact with other contracts is often accomplished by calling a function on the contract object (e.g., f() on contract).
+
+- You may look for any smart contract in the code that has been deployed. Use the .code command to get the EVM bytecode as a bytes memory, which may or may not include any data. Codehash is a command that returns the Keccak-256 hash of a code (as a bytes32). It should be noted that using addr.codehash is less expensive than using keccak256 (addr.code).
+
+- Address Literals:
+
+Hexadecimal literals that pass the address checksum test, for example “0xdCad3a6d3569DF655070DEd06cb7A1b2Ccd1D3AF” are of address type. Hexadecimal literals that are between 39 and 41 digits long and do not pass the checksum test produce an error. You can prepend (for integer types) or append (for bytesNN types) zeros to remove the error.
+
+● Contract types:
+
+- Every contract has its own type. Contracts may be implicitly converted into the contracts from which they derive. Contracts may be explicitly converted to and from the address type by using the address type conversion function.
+
+
+- Using the contract type as a local variable, you may invoke functions that are associated with the contracted type. Make certain that it is assigned from a location that has the same contract type.
+
+- Contracts may also be formed and instantiated (which means they are newly created). More information may be found in the section under "Contracts through new."
+
+        ●	The data representation of a contract is the same as the data representation of the address type, and this type is also utilized in the Address Based Identification (ABI).
+
+        ●	Contracts do not provide any assistance to operators.
+
+        ●	The members of contract types are the external functions of the contract, as well as any state variables that have been declared as publicly accessible.
+
+        ●	When dealing with a contract C, you may use type(C) to get information about the contract's type.
+
+● Bytes Type:
+- The byte types in Solidity are comprised of fixed sized and dynamic sized byte arrays.
+
+Fixed size byte arrays:
+
+The value types bytes1, bytes2, bytes3, …, bytes32 hold a sequence of bytes from one to up to 32.The .length function yields the fixed length of the byte array (read-only).
+
+Dynamically-sized byte array:
+
+The bytes data type in Solidity is a byte[] array with a dynamically changing size. Because it is dynamically sized, the length of this type can increase and shrink as necessary. As opposed to the bytes1, bytes2,..., bytes31, and bytes32 types, the bytes type stores densely packed data, whereas the bytesN type does not 
+
+In the case of the bytes type variables, an empty string is used as their first value. Using the Remix IDE, you can see that it returns 0x, which means that it is a byte[] array with a length of 0.
+
+Although there is no direct operator support for bytes, you may find yourself needing to compare two bytes variables from time to time.
+
+           bytes32 data = "test";
+
+● String Type:
+- Solidity supports both double quotation (") and single quote (') when referencing a string literal. It makes it possible to declare a variable of type String by providing the data type string.
+
+        string data = "test";
+
+- In the above example, the string literal "test" is represented by the string variable data. Because string operations use more gas than byte operations, it is preferable to employ byte types rather than String operations wherever possible instead of String operations. Solidity includes built-in conversion between bytes and strings, as well as the other way around. In Solidity, we can quickly and efficiently assign a String literal to a byte32 type variable. Solidity treats it as if it were a byte32 literal. 
+
+● Enum Types:
+- Enums limit the number of possible values for a variable to a small number of predefined options. The values contained within this enumerated list are referred to as enums.
+- It is possible to limit the number of bugs in your code by making use of enums in your code.
+
+As an example, if we were to investigate an application for a fresh juice shop, it would be possible to limit the glass size to three options: small, medium, and big. This would ensure that no one would be able to order a size other than small, medium, or large because of the restriction.
+
+        enum FreshJuiceSize{ SMALL, MEDIUM, LARGE }
+        FreshJuiceSize choice;
+        FreshJuiceSize constant defaultChoice = FreshJuiceSize.MEDIUM;
+
+●●	Reference Types :
+- This necessitates the fact that reference types must be handled with greater care than value types. At the moment, reference types include structs, arrays, and maps, among other things. If you use a reference type, you must always explicitly specify the data area in which the type is stored: memory (whose lifetime is limited to the duration of an external function call), storage (the location where the state variables are stored, whose lifetime is limited to the duration of a contract), or calldata (the location where the type is stored) (special data location that contains the function arguments).
+
+- Data Locations:
+
+Every reference type contains an additional descriptor, known as the "data location," that indicates where the data is kept. Memory, storage, and calldata are the three types of data storage available. Unlike memory, calldata is a static area that cannot be modified and is not persistent. It is used to store function arguments and acts in most ways like memory.
+
+- Storage vs Memory vs Calldata:
+ - Storage: Storage is the most straightforward concept to grasp because it is where all state variables are kept. Because the state of a contract can be changed (for example, within a function), storage variables must be mutable in order to be used. Their position, on the other hand, is permanent, and they are maintained on a blockchain system.
+
+Whenever possible, several values of state variables will occupy the same storage slot in order to maximize storage efficiency. Aside from the exceptions such as dynamically sized arrays and structs, all other variables are compressed into blocks of 32 bytes.
+
+- Constant state variables, on the other hand, are not saved into a storage slot. Instead, they are injected directly into the contract bytecode, and anytime those variables are read, the contract immediately switches them out for the constant value that was assigned to them in the beginning.
+
+- Memory:
+
+Variables specified within the scope of a function are given priority in terms of memory allocation. They only exist for the duration of the function call, and as a result, they are transient variables that cannot be retrieved outside of the function call (i.e. anywhere else in your contract besides that function). They are, however, modifiable inside the scope of that function.
+There are four 32-byte slots for memory in Solidity, each with a specific bytes-per-byte range, which are as follows: 1) 64 bytes of scratch space for hashing methods; 2) 32 bytes of currently allocated memory size, which is the free memory pointer where Solidity always places new objects; and 3) a 32-byte zero slot — which is used as the initial value for dynamic memory arrays and should never be written to.
+
+- Calldata:
+
+Calldata is an immutable, temporary storage place where function arguments are kept, and it operates largely like memory in terms of performance and responsiveness.
+
+It is suggested to make use of calldata wherever possible because it avoids the creation of unneeded copies and assures that the data is not updated. Return values from functions can additionally include arrays and structs with the calldata data location.
+
+ABI specifies a format for this sort of data, which is considered to be in multiples of 32 bytes and in accordance with the ABI definition (which differs from internal function calls). The arguments for constructors are a little different, in that they are appended directly to the end of the contract's code instead of being prefixed with the contract's name (also in ABI encoding).
+
+Everything else that is assigned to storage is always copied.
+It is advised to use calldata rather than memory when passing array parameters into functions because this results in significant gas savings. For example, using calldata in a summing function that loops over an input array can save about 1829 gas (or 3.5 percent) on average.
+
+- Once a reference type variable (array or struct) is defined, the data location for that variable must also be specified unless the variable is of type state, in which case it is automatically interpreted as storage. Since Solidity v0.6.9, memory and calldata are permitted in any functions, regardless of whether or not they are publicly visible (ie external, public, etc).
+
+It is advised to use calldata rather than memory when passing array parameters into functions because this results in significant gas savings. For example, using calldata in a summing function that loops over an input array can save about 1829 gas (or 3.5 percent) on average.
+
+●	Assignments between storage and memory (or from calldata) always result in the creation of a new copy.
+●	Assignments from one memory to another only result in the creation of references. As a result, altering one memory variable has an effect on all other memory variables that refer to the same data as the changed memory variable.
+●	Assignments from storage to a local storage variable also only assign a reference to the storage variable in question.
+●	Everything else that is assigned to storage is always copied.
+
+- Bytes and string as Arrays:
+
+Arrays of the types bytes and string are special types of arrays. In many ways, the bytes type is identical to bytes1[], except it is compressed into a smaller amount of calldata and memory. Strings are equal to bytes, except they do not enable access to the length or index of the string.
+
+Despite the fact that Solidity does not include any string manipulation functions, there are third-party string libraries available. Another useful function is keccak256(abi.encodePacked(s1)) == keccak256(abi.encodePacked(s2), which compares two strings based on their keccak256-hash. You can also concatenate two strings by using string.concat (s1, s2).
+
+- Use bytes rather than bytes1[] since it is less expensive. Using bytes1[] in memory adds 31 padding bytes between the elements, thus you should use bytes instead. It should be noted that the padding is absent in storage as a result of the tight packing (see bytes and string). When dealing with arbitrary-length raw byte data, bytes should be used and string should be used when dealing with arbitrary-length string (UTF-8) data. In cases when you are able to restrict the length to a specific number of bytes, always use one of the value types bytes1 to bytes32 because they are far more cost-effective.
+
+* Mapping
+
+Mapping is like a hash table or a dictionary in any other language when you use it in Solidity . A key can be one of any of the built-in types, but reference types aren't allowed. The value can be any type, too. Mappings are mostly used to link an Ethereum address to a value type.
