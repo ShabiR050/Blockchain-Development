@@ -1,3 +1,82 @@
+ * Ethereum introduction:
+- Ethereum is a decentralized, open-source blockchain platform that runs smart contracts: applications that run exactly as programmed without any possibility of downtime, censorship, fraud or third-party interference. These applications are run on a custom-built blockchain, which is a decentralized database that runs on a network of computers. Ethereum is the second-largest blockchain platform by market capitalization, after Bitcoin. It was developed by Vitalik Buterin in 2013 and has since become a popular platform for creating and running decentralized applications.
+
+Smart contracts:
+- Smart contracts are self-executing contracts with the terms of the agreement between buyer and seller being directly written into lines of code. The code and the agreements contained therein exist across a distributed, decentralized blockchain network. Smart contracts allow for the automation of digital contracts and have the potential to revolutionize the way that transactions are executed and recorded, enabling new forms of economic activity and improving the efficiency and security of existing systems.
+
+* Blockchain Layers:
+* Layer 0:
+- It’s the underlying infrastructure layer that forms the basic blockchain network consisting of distributed nodes forming the peer-to-peer architecture. Layer 0 enables interoperability (cross-chain communication), blockchain protocols that are built on the same layer 0 can easily transfer tokens and data.
+
+    Example : PolkaDot, Avalanche, Cosmos
+
+* L1 blockchains:
+- L1 blockchains, also known as "layer 1" blockchains, are the foundational layer of a blockchain platform. They are the underlying infrastructure that supports the platform and enables it to function. L1 blockchains typically consist of a network of nodes that maintain a shared, decentralized ledger of transactions and a consensus mechanism to ensure the integrity and security of the ledger. L1 blockchains are often the first layer of a multi-layer blockchain platform, with additional layers built on top to provide additional features and functionality. Examples of L1 blockchains include the Bitcoin and Ethereum networks.
+
+- Prominent blockchains like Bitcoin. Ethereum, Solana, Near, etc are the layer 1 chains. These are the execution protocols that provide the environment for transactions, handling cryptographic algorithms, data, consensus and tokenomics. Native tokens of the chain are the medium to interact with smart contracts, access resources, and mint NFT.
+
+As I mentioned earlier, some examples of L1 blockchains include the Bitcoin and Ethereum networks. Both of these networks are decentralized, open-source platforms that run on a network of nodes and use a consensus mechanism to maintain a shared ledger of transactions. Other examples of L1 blockchains include Litecoin, which is based on the Bitcoin network and provides faster transaction processing times, and Ripple, which is a payment network for financial institutions. These are just a few examples of L1 blockchains; there are many others that are in use today.
+
+        - Example : Solana, Ethereum, Bitcoin, Tezos, Near
+
+* L2 blockchain:
+- An L2 blockchain, or "layer 2 blockchain," is a blockchain that is built on top of another blockchain, known as the "layer 1" or "base" blockchain. L2 blockchains are designed to improve the scalability, performance, and security of the underlying blockchain by offloading some of the workload to the L2 blockchain. This can help to reduce transaction fees, increase transaction throughput, and improve the user experience. Some examples of L2 blockchains include the Lightning Network on top of the Bitcoin blockchain, and the Plasma framework on top of the Ethereum blockchain.
+
+- Built on top of layer 1 chains, L2 solves the scalability problem of the blockchain trilemma by improvising on transaction speed (faster finality) & throughputs (higher transactions per second). Layer 1 handles security, data & consensus while Layer 2 handles transactions and regularly communicates with layer1. It takes away the transaction burden from layer 1 while taking the advantages of layer1’s security and decentralization.
+        - Example : Polygon Matic L2 on Ethereum
+
+* Layer 3:
+- This is the utility layer where all the decentralized applications are built like DeFi, games & wallets. It gives abstraction where the user is only
+
+
+
+* Sharding:
+- Sharding is a technique used to improve the scalability and performance of a blockchain. In a sharded blockchain, the network is divided into multiple "shards," or partitions, where each shard processes a subset of the transactions and maintains its own portion of the ledger. This allows the network to process multiple transactions in parallel, which can increase the overall transaction throughput and reduce transaction fees.
+
+Here is an example of the steps to build a blockchain with sharding:
+
+1. Determine the number of shards and the shard size. The number of shards should be determined based on the desired level of scalability and performance, while the shard size should be determined based on the desired level of decentralization and security.
+
+2. Implement the sharding mechanism. This involves designing and implementing the algorithms and data structures for dividing the network into shards, assigning transactions to shards, and maintaining the consistency and integrity of the ledger across all shards.
+
+3. Implement the consensus mechanism. In a sharded blockchain, the consensus mechanism must be designed to ensure that the transactions within each shard are processed and validated in a decentralized and secure manner, and that the ledgers across all shards remain consistent.
+
+4. Implement the transaction processing and validation logic. This involves designing and implementing the algorithms and data structures for processing and validating transactions within each shard, as well as the mechanisms for communicating and coordinating with other shards.
+
+5. Implement the APIs and interfaces for interacting with the blockchain. This includes designing and implementing the APIs and interfaces for submitting transactions, querying the ledger, and accessing the data and functionality of the blockchain.
+
+* Consensus mechanism:
+- A consensus mechanism is a algorithm or protocol used by nodes in a distributed system to reach agreement on the state of the system. In a blockchain, the consensus mechanism is used to determine which transactions will be included in the next block of the ledger and to prevent conflicting transactions from being included.
+
+- Basically that’s how a consensus protocol works in blockchain. Different blockchain’s have different consensus protocol
+
+1. Proof Of Work (PoW):
+Yes, it means what it sounds like, showing the proof that you have done the work. As we know mining is basically solving a complex mathematical problem that requires high computational power. At a time when many miners compete to mine a block, the node that wins the race has a proof of work of spending energy and resources and hence it’s rewarded when the block is verified and added to the chain. If the node tries to perform malicious activity, the block will not be verified by other nodes in the network and the miner doesn’t get the reward, which is a total waste of its resources and time. Bitcoin works on PoW, while Ethereum is on its way to Proof of Stake. Proof Of Work requires a lot of power as many miners try to compete to mine a block, Proof Of Stake is a better alternative.
+
+2. Proof of Stake (PoS):
+In Proof of Stake, instead of miners competing in a race to mine a block, they are asked to stake (deposit) some minimum tokens of that blockchain to become validators (Miners in PoS are called as Validators). The validators are chosen randomly taking into consideration how many tokens they have staked or for how long they have been staking. If a validator performs any malicious activity he’s penalized from the stake. It is a more energy efficient protocol as not all the validators compete against each other which lowers transaction cost and increases throughput. This is one of the primary reasons for Ethereum to migrate to PoS.
+
+3. Proof of History (PoH):
+Proof of History is an extension of proof of Stake, developed by Solana. And it’s one of the primary reasons why Solana is very fast, having the block time of 400 millisecond compared to Ethereum (1Sec) & BTC (10Mins). PoH introduces a variable of time in the block, it’s showing the proof that a historical event had occurred. In other consensus protocols the validators need to talk to each other to agree on when a block was added and how much time has passed. Whereas in Solana it has its own clock coded in a SHA256 algorithm, the validators keep mining blocks and they are sequentially added to the chain.
+
+* Create ERC Token: 
+
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.13;
+
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.0.0/contracts/token/ERC20/ERC20.sol";
+
+  contract MyToken is ERC20 {
+    constructor(string memory name, string memory symbol) ERC20(name, symbol) {
+
+    // This mints 100 tokens to msg.sender (YOU). Just like how 1 dollar is 100 ccents, a token will have  1 * (10 ** decimals) decimals
+    _mint(msg.sender, 100 * 10**uint(decimals()));
+
+    }
+}
+
+
 What is a token?
 
 * While often misunderstood, a blockchain token is a powerful tool. A blockchain token can represent almost anything that we want to assign a value to. This representation includes whether the thing is virtual or a real-world, tangible object.

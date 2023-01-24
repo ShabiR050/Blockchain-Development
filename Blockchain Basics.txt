@@ -5,6 +5,50 @@
 Data location:
 When you use a reference type, you must explicitly provide the data storage location for the type. The following options can be used to specify the data location where the type is stored:
 
+A Block Header contain
+
+    - Block Number
+    - Version
+    - Timestamp
+    - Previous Hash
+    - Merkle Root
+    - Nonce
+
+* Cryptography:
+
+- Cryptography is a key technology that underpins the security of blockchain systems. It is used to secure the transactions and data on the blockchain, ensuring that they cannot be tampered with or modified without being detected.
+
+- In a blockchain, cryptography is used in several different ways, including the following:
+
+    1. Hashing: Hashing is the process of generating a fixed-size, unique output from an input of any size. In a blockchain, hashing is used to generate a unique "fingerprint" for each block of transactions, known as a block hash. This allows the blockchain to efficiently store and verify the integrity of the transactions.
+
+    2. Digital signatures: Digital signatures are a cryptographic technique that allows the sender of a message to prove that they are the true owner of the message. In a blockchain, digital signatures are used to sign transactions, proving that they are authorized by the owner of the associated cryptocurrency.
+    
+    3. Public-key cryptography: Public-key cryptography is a cryptographic technique that uses a pair of keys, one public and one private, to secure communications. In a blockchain, public-key cryptography is used to generate addresses for users and to enable them to securely receive and send transactions.
+    These are just a few examples of the ways that cryptography is used in blockchain technology. Cryptography is a complex and constantly evolving field, and it is essential for the security and functionality of blockchain systems.
+
+
+* Symmetric Cryptography:
+Alex wants to send some confidential message to Blake. In symmetric cryptography both of them will have a common key, let's call it K1. Alex encrypts the message using the key (K1) and then Bob decrypts the message using the same key (K1). The problem with this method is, if the key is compromised anyone can read the message.
+
+* Asymmetric cryptography or Public Key Cryptography:
+In this method, each node has two keys, one is a public key and the other one is a private key. In the above case, Alex and Blake both will have two keys each. Whenever there's a link between them, they'll share their public keys to each other. The encryption-decryption happens as follows.
+
+KA - Key of A, KB -Key of B, 1- Private Key, 2- Public Key
+
+    1. When Alex sends a message to Blake, It's first encrypted using his private key (KA1)
+    2. Proceeded by Blake's Public Key (KB2)
+    3.Then, Blake decrypts the first layer of encryption using his private key (KB1).
+    4.Blake gets the original message when it's decrypted using A's public key (KA2) in the last step.
+
+Properties of Asymmetric Cryptography :
+
+    - It is not possible to guess the Private key from the Public Key.
+    - However, they are mathematically linked in such a way that anything encrypted using either a Public or Private key can only be decrypted using only these two keys.
+    - Two layers of encryption ensures authenticity of the message. In the last step Blake is sure that the message was from Alex as it could be decrypted using Alex public key only.
+    - End-to-End encryption in WhatsApp works the same way.
+
+
 memory:
 * The location where function arguments are stored
 * Has a lifetime limited to the lifetime of an external function call
