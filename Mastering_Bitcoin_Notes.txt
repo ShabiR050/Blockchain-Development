@@ -1,0 +1,380 @@
+* Bitcoin:
+------------
+- The name of the currency unit (the coin), the network and the software.Bitcoin is a collection of concepts and technologies that form the basis of a digital money ecosystem. Units of currency called bitcoins are used to store and transmit value among participants in the bitcoin network. Bitcoin users communicate with each other using the bitcoin protocol primarily via the Internet, although other transport networks can also be used. The bitcoin protocol stack, available as open source software, can be run
+on a wide range of computing devices, including laptops and smartphones, making the technology easily accessible.
+
+* address (aka public key):
+---------------------------
+- A bitcoin address looks like 1DSrfJdB2AnWaFNgSbv3MZC2m74996JafV - they consist of a string of letters and numbers starting with a “1” (number one). Just like you ask others to send an email to your email address, you would ask others to send you bitcoin to your bitcoin address.
+
+* BIP:
+-------
+- Bitcoin Improvement Proposals. A set of proposals that members of the bitcoin community have submitted to improve bitcoin. For example BIP0021 is a proposal to improve the bitcoin URI scheme.
+
+* Block:
+--------
+- A grouping of transactions, marked with a timestamp, and a fingerprint of the previous block. The block header is hashed to find a proof-of-work, thereby validating the transactions. Valid blocks are added to the main blockchain by network consensus.
+
+* Blockchain:
+-------------
+- A list of validated blocks, each linking to its predecessor all the way to the genesis block.
+
+* Confirmations:
+-----------------
+- Once a transaction is included in a block, it has “one confirmation”. As soon as another block is mined on the same blockchain, the transaction has two confirmations etc. Six or more confirmations is considered sufficient  proof that a transaction cannot be reversed.
+
+* Difficulty:
+-------------
+- A network-wide setting that controls how much computation is required to find a proof-of-work.
+
+* Difficulty target:
+---------------------
+- A difficulty at which all the computation in the network will find blocks approximately every 10 minutes.
+
+* Difficulty re-targeting:
+--------------------------
+- A network-wide re-calculation of the difficulty which occurs once every 2106 blocks and considers the hashing power of the previous 2106 blocks.
+
+* Fees:
+-------
+- The sender of a transaction often includes a fee to the network for processing their requested transaction. Most transactions require a minimum fee of 0.5mBTC.
+
+* Hash:
+-------
+- A digital fingerprint of some binary input.
+
+* Genesis block:
+-----------------
+- The first block in the blockchain, used to initialize the crypto-currency.
+
+* Miner:
+---------
+- A network node that finds valid proof-of-work for new blocks, by repeated hashing.
+
+* Network:
+----------
+- A peer-to-peer network that propagates transactions and blocks to every bitcoin node on the network.
+
+* Proof-of-work:
+----------------
+- A piece of data that requires significant computation to find. In bitcoin, miners must find a numeric solution to the SHA256 algorithm that meets a network wide target, the difficulty target.
+
+* Reward:
+---------
+- An amount included in each new block as a reward by the network to the miner who found the proof-of-work solution. It is currently 6.25BTC per block.
+
+* Secret key (aka private key):
+--------------------------------
+- The secret number that unlocks bitcoins sent to the corresponding address. A secret key looks like 5J76sF8L5jTtzE96r66Sf8cka9y44wdpJjMwCxR3tzLh3ibVPxh.
+
+* Transaction:
+---------------
+- In simple terms, a transfer of bitcoins from one address to another. More precisely, a transaction is a signed data structure expressing a transfer of value. Transactions are transmitted over the bitcoin network, collected by miners and included into blocks, made permanent on the blockchain.
+
+* Wallet:
+---------
+- Software that holds all your bitcoin addresses and secret keys. Use it to send, receive and store your bitcoin.
+
+
+- Bitcoin is a fully-distributed, peer-to-peer system. As such there is no “central” server or point of control. Bitcoins are created through a process called “mining”, which involves looking for a solution to a difficult problem. Any participant in the bitcoin network (i.e., any device running the full bitcoin protocol stack) may operate as a miner, 1 using their computer’s processing power to attempt to find solutions to this problem.
+Every 10 minutes on average, a new solution is found by someone who then is able to validate the transactions of the past 10 minutes and is rewarded with brand new bitcoins.
+
+- The bitcoin protocol includes built-in algorithms that regulate the mining function across the network. The difficulty of the problem that miners must solve is adjusted dynamically so that, on average, someone finds a correct answer every 10 minutes regardless of how many miners (and CPUs) are working on the problem at any moment. The protocol also halves the rate at which new bitcoins are created every 4 years, and limits the total number of bitcoins that will be created to a fixed total of 21 million coins.The result is that the number of bitcoins in circulation closely follows an easily predictable
+curve that reaches 21 million by the year 2140.
+
+- Bitcoin represents the culmination of decades of research in cryptography and distributed systems and includes four key innovations brought together in a unique and powerful combination. Bitcoin consists of:
+    • A de-centralized peer-to-peer network (the bitcoin protocol);
+    • A public transaction ledger (the blockchain);
+    • A de-centralized mathematical and deterministic currency issuance distributed mining), and;
+    • A de-centralized transaction verification system (transaction script).
+
+- Byzantine Generals’ Problem. Briefly, the problem consists of trying to agree on a course of action by exchanging information over an unreliable and potentially compromised network.
+
+    * The three primary forms of bitcoin clients are:
+    - Full Client: A full client, or “full node” is a client that stores the entire history of bitcoin transactions (every transaction by every user, ever), manages the user’s wallets and can initiate transactions directly on the bitcoin network. This is similar to a standalone email server, in that it handles all aspects of the protocol without relying on any other servers or third party services.
+
+    - Light Client: A lightweight client stores the user’s wallet but relies on third-party owned servers for access to the bitcoin transactions and network. The light client does not store a full copy of all transactions and therefore must trust the third party servers for transaction validation. This is similar to a standalone email client that connects to a mail server for access to a mailbox, in that it relies on a third party for interactions
+    with the network.
+
+    - Web Client: Web-clients are accessed through a web browser and store the user’s wallet on a server owned by a third party. This is similar to webmail in that it relies entirely on a third party server.
+
+- The bitcoin system of trust is based on computation. Transactions are bundled into blocks, which require an enormous amount of computation to prove, but only a small amount of computation to verify as proven. This process is called mining and serves two purposes in bitcoin:
+    • Mining creates new bitcoins in each block, almost like a central bank printing new money. The amount of bitcoin created per block is fixed and diminishes with time.
+    • Mining creates trust by ensuring that transactions are only confirmed if enough computational power was devoted to the block that contains them. More blocks mean more computation which means more trust.
+
+- The algorithm for “Proof-of-Work” involves repeatedly hashing the header of
+the block and a random number with the SHA256 cryptographic algorithm until a
+solution matching a pre-determined pattern emerges. The first miner to find such a solution wins the round of competition and publishes that block into the blockchain.
+
+- A transaction transmitted across the network is not verified until it becomes part of the global distributed ledger, the blockchain. Every ten minutes on average, miners generate a new block that contains all the transactions since the last block. New transactions are constantly flowing into the network from user wallets and other applications. As these are seen by the bitcoin network nodes, they get added to a temporary “pool” of  unverified transactions maintained by each node. As miners build a new block, they add unverified transactions from this pool to a new block and then attempt to solve a very hard problem (aka Proof-of-Work) to prove the validity of that new block.
+
+- Each miner starts the process of mining a new block of transactions
+as soon as they receive the previous block from the network, knowing they have lost that previous round of competition. They immediately create a new block, fill it with transactions and the fingerprint of the previous block and start calculating the Proof-of-Work for the new block. Each miner includes a special transaction in their block, one that pays their own bitcoin address a reward of newly created bitcoins (currently 6.25 BTC per block). If they find a solution that makes that block valid, they “win”
+this reward because their successful block is added to the global blockchain and the reward transaction they included becomes spendable.
+
+- In most wallet implementations, the private and public keys are stored
+together as a key pair for convenience. However, the public key can
+be calculated from the private key, so storing only the private key is
+also possible.
+
+- A bitcoin wallet contains a collection of key pairs, each consisting of a private key and a public key. The private key (k) is a number, usually picked at random. From the private key, we use elliptic curve  multiplication, a one-way cryptographic function, to generate a public key (K). From the public key (K), we use a one-way cryptographic hash function
+to generate a bitcoin address (A).
+
+- A private key is simply a number, picked at random. Ownership and control over the private key is the root of user control over all funds associated with the corresponding bitcoin address. The private key is used to create signatures that are required to spend bitcoins by proving ownership of funds used in a transaction.
+
+- Secure Hash Algorithm (SHA) and the RACE Integrity Primitives Evaluation Message Digest (RIPEMD).Starting with the public key K, we compute the SHA256 hash and then compute the RIPEMD160 hash of the result, producing a 160 bit (20 byte) number:
+        A = RIPEMD160(SHA256(K)) //bitcoin address
+where K is the public key and A is the resulting bitcoin address.Bitcoin addresses are almost always presented to users in an encoding called
+“Base58Check”:
+
+Generating Bitcoin address from private key:
+--------------------------------------------
+
+            Private Key (K)
+                ⬇
+                ⬇ (ECDSA(K))
+                ⬇
+            Public key (PK)
+                ⬇
+                ⬇ RIPEMD160(SHA256(PK)) : Double Hash / HASH160
+                ⬇
+            Public Key Hash(PKH) : (20 bytes / 160 bits)
+                ⬇
+                ⬇ (Base58Check Encode with 0x00 version prefix)
+                ⬇
+            Bitcoin Address (Base58Check Encoded PKH)
+
+
+- Even more compact, Base-64 representation uses 26 lower case letters, 26 capital letters, 10 numerals and two more characters such as “+” and “/” to transmit binary data over text-based media such as email. Base-64 is most commonly used to add binary attachments to email. Base-58 is a text-based binaryencoding format developed for use in bitcoin and used in many other crypto-currencies. It offers a balance between compact representation, readability and error detection and prevention. Base-58 is a subset of Base-64, using the upper and lower case letters and numbers but omitting some characters that are frequently mistaken for one another and can appear identical when displayed in certain fonts. Specifically, Base-58 is Base-64 without the 0 (number zero), O (capital o), l (lower L), I (capital i) and the symbols “\ +” and “/”. Or, more simply, it is a set of lower and capital letters and numbers without the four (0, O, l, I) mentioned above. Bitcoin’s Base-58 Alphabet:
+        123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz
+
+Base58Check Encoding:-
+-----------------------
+
+            Payload
+                ⬇
+                ⬇ 1.Add Version , 2. Hash (Version Prefix + payload)
+                ⬇
+            Version + Payload = data
+                ⬇
+                ⬇ SHA256(SHA256(data)) = Take first 4 bytes as checksum
+                ⬇
+            Version + Payload + Checksum
+                ⬇
+                ⬇ (Base58 Encode)
+                ⬇
+            Bitcoin Address (Base58Check Encoded Payload)
+
+
+* Base58Check Version Prefix and Encoded Result Examples:
+---------------------------------------------------------
+
+    Type                    Version prefix (hex)    Base-58 result prefix
+   --------                 -------------------     ---------------------
+Bitcoin Address                 0x00                        1
+Pay-to-Script-Hash Address      0x05                        3
+Bitcoin Testnet Address         0x6F                        m or n
+Private Key WIF                 0x80                        5, K or L
+BIP38 Encrypted Private Key     0x0142                      6P
+BIP32 Extended Public Key       0x0488B21E                  xpub
+
+* Wallets contain keys, not coins. The coins are stored on the blockchain
+in the form of transaction-outputs (often noted as vout or txout). Each user has a wallet containing keys. Wallets are really keychains containing pairs of private/public keys (See (to come)). Users sign transactions with the keys, thereby proving they own the transaction outputs (their coins).
+
+* Hierarchical Deterministic Wallets (BIP0032/BIP0044):
+-------------------------------------------------------
+- Deterministic wallets were developed to make it easy to derive many keys from a single “seed”. The most advanced form of deterministic wallets is the Hierarchical Deterministic Wallet or HD Wallet defined by the BIP0032 standard. Hierarchical deterministic wallets contain keys derived in a tree structure, such that a parent key can derive a sequence of children keys, each of which can derive a sequence of grandchildren keys and so on to an infinite depth.
+
+- HD wallets offer two major advantages over random (non-deterministic) keys. First, the tree structure can be used to express additional organizational meaning, such as when a specific branch of sub-keys is used to receive incoming payments and a different branch is used to receive change from outgoing payments. Branches of keys can also be used in a corporate setting, allocating different branches to departments,subsidiaries,
+specific functions or accounting categories.
+
+- The second advantage of HD wallets is that users can create a sequence of public keys without having access to the corresponding private keys. This allows HD wallets to be used on an insecure server or in a receive-only capacity, issuing a different public key for each transaction. The public keys do not need to be pre-loaded or derived in advance, yet the server doesn’t have the private keys that can spend the funds.
+
+- HD wallets are created from a single root seed, which is a 128, 256 or 512 bit random number. Everything else in the HD wallet is deterministically derived from this root seed, which makes it possible to re-create the entire HD wallet from that seed in any compatible HD wallet. This makes it easy to backup, restore, export and import HD wallets containing thousands or even millions of keys by simply transferring only the root seed. The root seed is most often represented by a mnemonic word sequence, as described in the previous section “Mnemonic Code Words” on page 86, to make it easier for people to transcribe and store it.
+
+- Hierarchical Deterministic wallets use a child key derivation (CKD) function to derive children keys from parent keys.
+The child key derivation functions are based on one-way hash functions that combines:
+    • A parent private or public key (ECDSA uncompressed key)
+    • A seed called a chain code (256 bits)
+    • An index number (32 bits)
+
+- A child private key, the corresponding public key and the bitcoin
+address are all indistinguishable from keys and addresses created
+randomly. The fact that they are part of a sequence is not visible,
+outside of the HD wallet function that created them. Once created,
+they operate exactly as “normal” keys.
+
+* Transaction Locktime:
+-----------------------
+- Locktime defines the earliest time that a transaction can be added to the blockchain. It is set to zero in most transactions to indicate immediate execution. If locktime is nonzero and below 500 million, it is interpreted as a block height, meaning the transaction is not included in the blockchain prior to the specified block height. If it is above 500 million, it is interpreted as a Unix Epoch timestamp (seconds since Jan-1-1970) and the
+transaction is not included in the blockchain prior to the specified time. The use of locktime is equivalent to post-dating a paper cheque.
+
+* Transaction Outputs and Inputs : (UTXO)
+-----------------------------------------
+The fundamental building block of a bitcoin transaction is an unspent transaction output or UTXO. UTXO are indivisible chunks of bitcoin currency locked to a specific owner, recorded on the blockchain, and recognized as currency units by the entire network. The bitcoin network tracks all available (unspent) UTXO currently numbering in the millions. Whenever a user receives bitcoin, that amount is recorded within the blockchain as a UTXO. Thus, a user’s bitcoin may be scattered as UTXO amongst hundreds
+of transactions and hundreds of blocks. In effect, there is no such thing as a stored balance of a bitcoin address or account; there are only scattered UTXO, locked to specific owners. The concept of a user’s bitcoin balance is a derived construct created by the wallet application. The wallet calculates the user’s balance. There are no accounts or balances in bitcoin, there are only unspent transaction outputs (UTXO) scattered in the blockchain.
+
+- UTXO are tracked by every full node bitcoin client in a database held in memory, called the UTXO set or UTXO pool. New transactions consume (spend) one or more of these outputs from the UTXO set.
+Transaction outputs consist of two parts:
+    • An amount of bitcoin, denominated in satoshis, the smallest bitcoin unit
+    • A locking script, also known as an “encumbrance” that “locks” this amount by specifying
+the conditions that must be met to spend the output
+
+- if you consume a 20 bitcoin UTXO to make a 1 bitcoin payment, you must
+include a 19 bitcoin change output back to your wallet. Otherwise, the 19 bitcoin “leftover” will be counted as a transaction fee and will be collected by the miner who mines your transaction in a block. While you will receive priority processing and make a miner very happy, this is probably not what you intended.
+
+- Transaction Pools:
+---------------------
+Almost every node on the bitcoin network maintains a temporary list of unconfirmed transactions called the memory pool or transaction pool. Nodes use this pool to keep track of transactions that are known to the network but are not yet included in the blockchain. For example, a node that holds a user’s wallet will use the transaction pool to track incoming payments to the user’s wallet that have been received on the network but are not yet confirmed.As transactions are received and verified, they are added to the transaction pool and relayed to the neighboring nodes to propagate on the network.
+
+- When a transaction is added to the transaction pool, the orphan pool is checked for any orphans that reference this transaction’s outputs (its children). Any matching orphans are then validated. If valid, they are removed from the orphan pool and added to the transaction pool, completing the chain that started with the parent transaction. In light of the newly added transaction which is no longer an orphan, the process is repeated
+recursively looking for any further descendants, until no more descendants are found. Through this process, the arrival of a parent transaction triggers a cascade reconstruction of an entire chain of interdependent transactions by re-uniting the orphans with their parents all the way down the chain.
+
+- Both the transaction pool and orphan pool (where implemented) are stored in local memory and are not saved on persistent storage, rather they are dynamically populated from incoming network messages. When a node starts, both pools are empty and are gradually populated with new transactions received on the network.
+
+- The blockchain data structure is an ordered back-linked list of blocks of transactions. The blockchain can be stored as a flat file, or in a simple database. The bitcoin core client stores the blockchain metadata using Google’s LevelDB database. Blocks are linked “back”, each referring to the previous block in the chain. The blockchain is often visualized as a vertical stack, with blocks layered on top of each other and the first block
+ever serving as the foundation of the stack. The visualization of blocks stacked on top of each other results in the use of terms like “height” to refer to the distance from the first block, and “top” or “tip” to refer to the most recently added block.
+
+- One way to think about the blockchain is like layers in a geological formation, or glacier core sample. The surface layers may change with the seasons, or even be blown away before they have time to settle. But once you go a few inches deep, geological layers become more and more stable. By the time you look a few hundred feet down, you are looking at a snapshot of the past that has remained undisturbed for millennia or millions of years. In the blockchain, the most recent few blocks may be revised if there is a chain
+recalculation due to a fork. The top six blocks are like a few inches of topsoil. But once you go deeper into the blockchain, beyond 6 blocks, blocks are less and less likely to change.
+
+- After 100 blocks back there is so much stability that the “coinbase” transaction, the transaction containing newly-mined bitcoins, can be spent. A few thousand blocks back (a month) and the blockchain is settled history. It will never change.
+
+- A block is a container data structure that aggregates transactions for inclusion in the public ledger, the blockchain. The block is made of a header, containing metadata, followed by a long list of transactions that make up the bulk of its size. The block header is 80 bytes, whereas the average transaction is at least 250 bytes and the average block contains more than 500 transactions. A complete block, with all transactions, is therefore 1000 times larger than the block header.
+
+- 4 bytes: Block Size: The size of the block, in bytes, following this field
+- 80 bytes: Block Header: Several fields form the block header
+- 1-9 bytes (VarInt): Transaction Counter: How many transactions follow
+
+- Block Header:
+---------------
+The block header consists of three sets of block metadata. First, there is a reference to a previous block hash, which connects this block to the previous block in the blockchain. We will examine this in more detail in Chapter 7. The second set of metadata, namely the difficulty, timestamp and nonce, relate to the mining competition. The third piece of metadata is the Merkle Tree root, a data structure used to efficiently summarize all the transactions in the block.The block header is 80 bytes.
+
+  Size            Field                             Description
+--------        ---------------               ------------------------------
+ 4 bytes         Version                      A version number to track software/protocol upgrades
+
+ 32 bytes        Previous Block Hash          A reference to the hash of the previous(parent) block in the chain
+
+ 32 bytes        Merkle Root                  A hash of the root of the Merkle-Tree of this block’s transactions
+
+ 4 bytes         Timestamp                    The approximate creation time of this block (seconds from Unix Epoch)
+
+ 4 bytes         Difficulty Target            The proof-of-work algorithm difficulty target for this block
+
+ 4 bytes         Nonce                        A counter used for the proof-of-work algorithm
+
+ - Unlike the block hash, the block height is not a unique identifier. While a single block will always have a specific and invariant block height, the reverse is not true - the block height does not always identify a single block. Two or more blocks may have the same block height, competing for the same position in the blockchain.Each node dynamically identifies a block’s position (height) in the blockchain when it is received from the bitcoin network. The block height may also be stored as metadata in an indexed
+database table for faster retrieval.
+
+- Sample block: 
+
+    {
+        "hash" : "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+        "confirmations" : 308321,
+        "size" : 285,
+        "height" : 0,
+        "version" : 1,
+        "merkleroot" : "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b",
+        "tx" : [
+        "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+        ],
+        "time" : 1231006505,
+        "nonce" : 2083236893,
+        "bits" : "1d00ffff",
+        "difficulty" : 1.00000000,
+        "nextblockhash" : "00000000839a8e6886ab5951d76f411475428afc90947ee320161bbf18eb6048"
+    }
+
+- Merkle Trees:
+----------------
+- Each block in the bitcoin blockchain contains a summary of all the transactions in the block, using a Merkle Tree.
+
+- A Merkle Tree, also known as a Binary Hash Tree is a data structure used for efficiently summarizing and verifying the integrity of large sets of data. Merkle Trees are binary trees containing cryptographic hashes. The term “tree” is used in computer science to describe a branching data structure, but these trees are usually displayed upside down with the “root” at the top and the “leaves” at the bottom of a diagram.
+
+- Merkle trees are used in bitcoin to summarize all the transactions in a block, producing an overall digital fingerprint of the entire set of transactions, providing a very efficient process to verify if a transaction is included in a block. A merkle tree is constructed by recursively hashing pairs of nodes until there is only one hash, called the root, or merkle
+root. The cryptographic hash algorithm used in bitcoin’s merkle trees is SHA256 applied twice, also known as double-SHA256.
+
+- When N data elements are hashed and summarized in a Merkle Tree, you can check to see if any one data element is included in the tree with at most 2*log2(N) calculations, making this a very efficient data structure.
+
+- The merkle tree is constructed bottom-up. In the example below, we start with four transactions A, B, C and D, which form the leaves of the Merkle Tree, shown in the diagram at the bottom. The transactions are not stored in the merkle tree, rather their data is hashed and the resulting hash is stored in each leaf node as HA, HB, HC and HD:
+        HA = SHA256(SHA256(Transaction A))
+
+- Consecutive pairs of leaf nodes are then summarized in a parent node, by concatenating the two hashes and hashing them together. For example, to construct the parent node HAB, the two 32-byte hashes of the children are concatenated to create a 64-byte string. That string is then double-hashed to produce the parent node’s hash:
+        HAB = SHA256(SHA256(HA + HB))
+
+- The process continues until there is only one node at the top, the node known as the Merkle Root. That 32-byte hash is stored in the block header and summarizes all the data in all four transactions.
+
+- Since the merkle tree is a binary tree, it needs an even number of leaf nodes. If there is an odd number of transactions to summarize, the last transaction hash will be duplicated to create an even number of leaf nodes, also known as a balanced tree.
+
+- To prove that a specific transaction is included in a block, a node only needs to produce log2(N) 32-byte hashes, constituting an authentication path or merkle path connecting the specific transaction to the root of the tree. This is especially important as the number of transactions increases, because the base-2 logarithm of the number of transactions increases much more slowly. This allows bitcoin nodes to efficiently produce paths of
+ten or twelve hashes (320-384 bytes) which can provide proof of a single transaction out of more than a thousand transactions in a megabyte sized block. In the example below, a node can prove that a transaction K is included in the block by producing a merkle path that is only four 32-byte hashes long (128 bytes total). The path consists of the four hashes (noted in blue in the diagram below) HL, HIJ, HMNOP and HABCDEFGH. With those four hashes provided as an authentication path, any node can prove that HK (noted
+in green in the diagram below) is included in the merkle root by computing four additional pair-wise hashes HKL, HIJKL and HIJKLMNOP (outlined in a dotted line in the diagram below) that lead to the merkle root.
+
+* Mining: 
+---------
+- Mining is the process by which new bitcoin is added to the money supply. Mining also serves to secure the bitcoin system against fraudulent transactions or transactions spending the same amount of bitcoin more than once, known as a double-spend. Miners provide processing power to the bitcoin network in exchange for the opportunity to be rewarded bitcoin.
+
+- Miners validate new transactions and record them on the global ledger. A new block, containing transactions that occurred since the last block, is “mined” every 10 minutes, thereby adding those transactions to the blockchain. Transactions that become part of a block and added to the blockchain are considered “confirmed”, which allows the new owners of bitcoin to spend the bitcoin they received in those transactions.
+
+- Miners receive two types of reward for mining: new coins created with each new block and transaction fees from all the transactions included in the block. To earn this reward, the miners compete to solve a difficult mathematical problem based on a cryptographic hash algorithm. The solution to the problem, called the Proof-of-Work, is included in the new block and acts as proof that the miner expended significant computing effort.
+The competition to solve the Proof-of-Work algorithm to earn reward and the right to record transactions on the blockchain is the basis for bitcoin’s security model.
+
+- The process of new coin generation is called mining, because the reward is designed to simulate diminishing returns, just like mining for precious metals. Bitcoin’s money supply is created through mining, similar to how a central bank issues new money by printing bank notes. The amount of newly created bitcoin a miner can add to a block decreases approximately every four years (or precisely every 210,000 blocks). It started at 50 bitcoin per block in January of 2009 and halved to 25 bitcoin per block in November
+of 2012. It will halve again to 12.5 bitcoin per block sometime in 2016. Based on this formula, bitcoin mining rewards decrease exponentially until approximately the year 2140 when all bitcoin (20.99999998 million) will have been issued. After 2140, no new bitcoins will be issued.
+
+- Bitcoin miners also earn fees from transactions. Every transaction may include a transaction fee, in the form of a surplus of bitcoin between the transaction’s inputs and outputs. The winning bitcoin miner gets to “keep the change” on the transactions included in the winning block. Today, the fees represent 0.5% or less of a bitcoin miner’s income, the vast majority coming from the newly minted bitcoins. However, as the reward decreases
+over time and the number of transactions per block increases, a greater proportion of bitcoin mining earnings will come from fees. After 2140, all bitcoin miner earnings will be in the form of transaction fees.
+
+* How Node verifies transactions:
+---------------------------------
+- Each node verifies every transaction against a long checklist of criteria:
+    • The transaction’s syntax and data structure must be correct.
+
+    • Neither lists of inputs or outputs are empty.
+
+    • The transaction size in bytes is less than MAX_BLOCK_SIZE.
+
+    • Each output value, as well as the total, must be within the allowed range of values(less than 21m coins, more than 0).
+
+    • None of the inputs have hash=0, N=-1 (coinbase transactions should not be relayed).
+
+    • nLockTime is less than or equal to INT_MAX.
+
+    • The transaction size in bytes is greater than or equal to 100.
+
+    • The number of signature operations contained in the transaction is less than the signature operation limit.
+
+    • The unlocking script (scriptSig) can only push numbers on the stack, and the locking script (scriptPubkey) must match isStandard forms (this rejects “nonstandard”     transactions)
+
+    • A matching transaction in the pool, or in a block in the main branch, must exist.
+
+    • For each input, if the referenced output exists in any other transaction in the pool, reject this transaction.
+
+    • For each input, look in the main branch and the transaction pool to find the referenced output transaction. If the output transaction is missing for any input, this will be an orphan transaction. Add to the orphan transactions pool, if a matching transaction is not already in the pool.
+
+    • For each input, if the referenced output transaction is a coinbase output, it must have at least COINBASE_MATURITY (100) confirmations.
+
+    • For each input, the referenced output must exist and cannot already be spent.
+
+    • Using the referenced output transactions to get input values, check that each input value, as well as the sum, are in the allowed range of values (less than 21m coins,
+    more than 0)
+
+    • Reject if the sum of input values < sum of output values.
+
+    • Reject if transaction fee would be too low to get into an empty block.
+
+    • The unlocking scripts for each input must validate against the corresponding output locking scripts.
+
+- By independently verifying each transaction as it is received and before propagating it, every node builds a pool of valid new transactions (the transaction pool), roughly in the same order.
+
+- After validating transactions, a bitcoin node will add them to the memory pool, or transaction pool, where transactions await until they can be included (mined) into a block.
+
+- To construct the candidate block Jing’s bitcoin node selects transactions from the memory pool, by applying a priority metric to each transaction and adding the highest priority transactions first. Transactions are prioritized based on the “age” of the UTXO that is being spent in their inputs, allowing for old and high-value inputs to be prioritized over newer and smaller inputs. Prioritized transactions can be sent without any fees, if there is enough space in the block. The priority of a transaction is calculated as the sum of the value and age of the inputs divided by the total size of the transaction:
+        Priority = Sum (Value of input * Input Age) / Transaction Size
+
+- A “fork” occurs whenever there are two candidate blocks competing to form the longest blockchain. This occurs under normal conditions whenever two miners solve the Proof-of-Work algorithm within a short period of time from each other. As both miners discover a solution for their respective candidate blocks, they immediately broadcast their own “winning” block to their immediate neighbors who begin propagating the block across the network. Each node that receives a valid block will incorporate it into their
+blockchain, extending the blockchain by one block. If that node later sees another candidate block extending the same parent, they connect the second candidate on a secondary chain. As a result, some nodes will “see” one candidate block first, while other nodes will see the other candidate block and two competing versions of the blockchain will emerge.
+
+- Forks are almost always resolved within one block. As part of the network’s hashing power is dedicated to building on top of “red” as the parent, another part of the hashing power is focused on building on top of “green”. Even if the hashing power is almost evenly split, it is likely that one set of miners will find a solution and propagate it before the other set of miners have found any solutions. Let’s say for example that the miners
+building on top of “green” find a new block “pink” that extends the chain (e.g. bluegreen-pink). They immediately propagate this new block and the entire network sees it as a valid solution.
