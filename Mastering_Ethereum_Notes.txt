@@ -1,0 +1,662 @@
+* Ethereum is often described as "the world computer.”From a more practical perspective, Ethereum is an open source, globally decentralized computing infrastructure that executes programs called smart contracts. It uses a blockchain to synchronize and store the system’s state changes, along with a cryptocurrency called ether to meter and constrain execution resource costs.
+
+* The Ethereum platform enables developers to build powerful decentralized applications with built-in economic functions. While providing high availability, auditability, transparency, and neutrality, it also reduces or eliminates censorship and reduces certain counterparty risks.
+
+- Many people will come to Ethereum with some prior experience of cryptocurrencies, specifically Bitcoin. Ethereum shares many common elements with other open blockchains: a peer-to-peer network connecting participants, a Byzantine fault–tolerant consensus algorithm for synchronization of state updates (a proof-of-work blockchain), the use of cryptographic primitives such as digital signatures and hashes, and a digital currency (ether).
+
+* Components of a Blockchain:
+------------------------------
+- The components of an open, public blockchain are (usually):
+
+    • A peer-to-peer (P2P) network connecting participants and propagating transactions and blocks of verified transactions, based on a standardized "gossip" protocol
+
+    • Messages, in the form of transactions, representing state transitions
+
+    • A set of consensus rules, governing what constitutes a transaction and what makes for a valid state transition
+
+    • A state machine that processes transactions according to the consensus rules
+
+    • A chain of cryptographically secured blocks that acts as a journal of all the verified and accepted state transitions
+
+    • A consensus algorithm that decentralizes control over the blockchain, by forcing participants to cooperate in the enforcement of the consensus rules
+
+    • A game-theoretically sound incentivization scheme (e.g., proof-of-work costs plus block rewards) to economically secure the state machine in an open environment
+
+    • One or more open source software implementations of the above ("clients")
+
+ * Ethereum’s development was planned over four distinct stages, with major changes occurring at each stage. A stage may include subreleases, known as "hard forks," that change functionality in a way that is not backward compatible.
+
+ * The four main development stages are codenamed Frontier, Homestead, Metropolis, and Serenity. 
+
+* The intermediate hard forks that have occurred to date are codenamed Ice Age, DAO, Tangerine Whistle, Spurious Dragon, Byzantium, Constantinople/St. Petersburg, Istanbul and Muir Glacier. Both the development stages and the intermediate hard forks are shown on the following timeline, which is "dated" by block number:
+
+    • Block #0:
+    Frontier — The initial stage of Ethereum, lasting from July 30, 2015, to March 2016.
+
+    • Block #200,000:
+    Ice Age — A hard fork to introduce an exponential difficulty increase, to motivate a transition to PoS when ready.
+
+    • Block #1,150,000:
+    Homestead — The second stage of Ethereum, launched in March 2016.
+
+    • Block #1,192,000:
+    DAO — A hard fork that reimbursed victims of the hacked DAO contract and caused Ethereum and Ethereum Classic to split into two competing systems.
+
+    • Block #2,463,000:
+    Tangerine Whistle — A hard fork to change the gas calculation for certain I/O-heavy operations and to clear the accumulated state from a denial-of-service (DoS) attack that exploited the low gas cost of those operations.
+
+    • Block #2,675,000:
+    Spurious Dragon — A hard fork to address more DoS attack vectors, and another state clearing. Also, a replay attack protection mechanism.
+
+    • Block #4,370,000:
+    Metropolis Byzantium — Metropolis is the third stage of Ethereum. Launched in October 2017, Byzantium is the first part of Metropolis, adding low-level functionalities and adjusting the block reward and difficulty.
+
+    • Block #7,280,000:
+    Constantinople / St. Petersburg — Constantinople was planned to be the second part of Metropolis with similar improvements. A few hours before its activation, a critical bug was discovered. The hard fork was therefore postponed and renamed St. Petersburg.
+
+    • Block #9,069,000:
+    Istanbul — An additional hard fork with the same approach, and naming convention, as for the prior two.
+
+    • Block #9,200,000:
+    Muir Glacier — A hard fork whose sole purpose was to adjust the difficulty again due to the exponential increase introduced by Ice Age.
+
+- Two hard forks, Berlin and London, have also been announced, and we are now in the final stage of Ethereum development, codenamed Serenity. Serenity involves a profound reorganization of the infrastructure that will make Ethereum more scalable, more secure, and more sustainable. It is presented as the second version of Ethereum, "Ethereum 2.0".
+
+* The original blockchain, namely Bitcoin’s blockchain, tracks the state of units of bitcoin and their ownership. You can think of Bitcoin as a distributed consensus state machine, where transactions cause a global state transition, altering the ownership of coins. The state transitions are constrained by the rules of consensus, allowing all participants to (eventually) converge on a common (consensus) state of the system, after several blocks are mined.
+
+* Ethereum is also a distributed state machine. But instead of tracking only the state of currency ownership, Ethereum tracks the state transitions of a general-purpose data store, i.e., a store that can hold any data expressible as a key–value tuple. A key–value data store holds arbitrary values, each referenced by some key.
+
+* In some ways, this serves the same purpose as the data storage model of Random Access Memory (RAM) used by most general-purpose computers. Ethereum has memory that stores both code and data, and it uses the Ethereum blockchain to track how this memory changes over time. Like a general-purpose stored-program computer, Ethereum can load code into its state machine and run that code, storing the resulting state changes in its blockchain.
+
+* Two of the critical differences from most general-purpose computers are that Ethereum state changes are governed by the rules of consensus and the state is distributed globally. Ethereum answers the question: "What if we could track any arbitrary state and program the state machine to create a world-wide computer operating under consensus?"
+
+* Ethereum’s Components:
+-------------------------
+    • P2P network:
+    Ethereum runs on the Ethereum main network, which is addressable on TCP port 30303, and runs a protocol called ÐΞVp2p.
+
+    • Consensus rules:
+    Ethereum’s consensus rules are defined in the reference specification, the Yellow Paper (see Further Reading).
+
+    • Transactions:
+    Ethereum transactions are network messages that include (among other things) a sender, recipient, value, and data payload.
+
+    • State machine:
+    Ethereum state transitions are processed by the Ethereum Virtual Machine (EVM), a stack-based virtual machine that executes bytecode (machine-language instructions). EVM programs, called "smart contracts," are written in high-level languages (e.g., Solidity) and compiled to bytecode for execution on the EVM.
+
+    • Data structures:
+    Ethereum’s state is stored locally on each node as a database (usually Google’s LevelDB), which contains the transactions and system state in a serialized hashed data structure called a Merkle Patricia Tree.
+
+    • Consensus algorithm:
+    Ethereum uses Bitcoin’s consensus model, Nakamoto Consensus, which uses sequential single-signature blocks, weighted in importance by PoW to determine the longest chain and therefore the current state. However, there are plans to move to a PoS weighted voting system, codenamed Casper, in the near future.
+
+    • Economic security:
+    Ethereum currently uses a PoW algorithm called Ethash, but this will eventually be dropped with the move to PoS at some point in the future.
+
+    • Clients:
+    Ethereum has several interoperable implementations of the client software, the most prominent of which are Go-Ethereum (Geth) and Parity.
+
+* Alan Turing further defined a system to be Turing complete if it can be used to simulate any Turing machine. Such a system is called a Universal Turing machine (UTM).
+
+* Ethereum’s ability to execute a stored program, in a state machine called the Ethereum Virtual Machine, while reading and writing data to memory makes it a Turing-complete system and therefore a UTM. Ethereum can compute any algorithm that can be computed by any Turing machine, given the limitations of finite memory.
+
+* Turing proved that you cannot predict whether a program will terminate by simulating it on a computer. In simple terms, we cannot predict the path of a program without running it. Turing-complete systems can run in "infinite loops," a term used (in oversimplification) to describe a program that does not terminate. It is trivial to create a program that runs a loop that never ends. But unintended never-ending loops can arise without warning, due to complex interactions between the starting conditions and the code. 
+
+* To answer this challenge, Ethereum introduces a metering mechanism called gas. As the EVM executes a smart contract, it carefully accounts for every instruction (computation, data access, etc.). Each instruction has a predetermined cost in units of gas. When a transaction triggers the execution of a smart contract, it must include an amount of gas that sets the upper limit of what can be consumed running the smart contract. 
+
+* The EVM will terminate execution if the amount of gas consumed by computation exceeds the gas available in the transaction. Gas is the mechanism Ethereum uses to allow Turing-complete computation while limiting the resources that any program can consume.
+
+* The next question is, 'how does one get gas to pay for computation on the Ethereum world computer?' You won’t find gas on any exchanges. It can only be purchased as part of a transaction, and can only be bought with ether. Ether needs to be sent along with a transaction and it needs to be explicitly earmarked for the purchase of gas, along with an acceptable gas price. Just like at the pump, the price of gas is not fixed. Gas is purchased for the transaction, the computation is executed, and any unused gas is refunded back to the sender of the transaction.
+
+* Ether denominations and unit names:
+
+Value (in wei)                              Exponent         Common name         SI name
+--------------                             ----------       -------------      ----------
+1                                           1                   wei              Wei
+
+1,000                                       10^3                Babbage          Kilowei or femtoether
+
+1,000,000                                   10^6                Lovelace         Megawei or picoether
+
+1,000,000,000                               10^9                Shannon          Gigawei or nanoether
+
+1,000,000,000,000                           10^12               Szabo            Microether or micro
+
+1,000,000,000,000,000                       10^15               Finney           Milliether or milli
+
+1,000,000,000,000,000,000                   10^18               Ether            Ether
+
+1,000,000,000,000,000,000,000               10^21               Grand            Kiloether
+
+1,000,000,000,000,000,000,000,000           10^24                                Megaether
+
+* Currently, there are six main implementations of the Ethereum protocol, written in six different languages:
+
+    • Parity, written in Rust
+
+    • Geth, written in Go
+
+    • cpp-ethereum, written in C++
+
+    • pyethereum, written in Python
+
+    • Mantis, written in Scala
+
+    • Harmony, written in Java
+
+* Full Node Advantages and Disadvantages:
+-----------------------------------------
+Choosing to run a full node helps with the operation of the networks you connect it to, but also incurs some mild to moderate costs for you. Let’s look at some of the advantages and disadvantages.
+
+Advantages:
+-----------
+
+    • Supports the resilience and censorship resistance of Ethereum-based networks
+
+    • Authoritatively validates all transactions
+
+    Can interact with any contract on the public blockchain without an intermediary
+
+    • Can directly deploy contracts into the public blockchain without an intermediary
+
+    • Can query (read-only) the blockchain status (accounts, contracts, etc.) offline
+
+    • Can query the blockchain without letting a third party know the information you’re reading
+
+Disadvantages:
+--------------
+
+    • Requires significant and growing hardware and bandwidth resources
+
+    • May require several days to fully sync when first started
+
+    • Must be maintained, upgraded, and kept online to remain synced
+
+* Ethereum has two different types of accounts: externally owned accounts (EOAs) and contracts. Ownership of ether by EOAs is established through digital private keys, Ethereum addresses, and digital signatures. The private keys are at the heart of all user interaction with Ethereum. In fact, account addresses are derived directly from private keys: a private key uniquely determines a single Ethereum address, also known as an account.
+
+* That is to say that private keys should remain private and never appear in messages passed to the network, nor should they be stored on-chain; only account addresses and digital signatures are ever transmitted and stored on the Ethereum system.
+
+* Access and control of funds is achieved with digital signatures, which are also created using the private key. Ethereum transactions require a valid digital signature to be included in the blockchain. Anyone with a copy of a private key has control of the corresponding account and any ether it holds. Assuming a user keeps their private key safe, the digital signatures in Ethereum transactions prove the true owner of the funds, because they prove ownership of the private key.
+
+* In the payment portion of an Ethereum transaction, the intended recipient is represented by an Ethereum address, which is used in the same way as the beneficiary account details of a bank transfer. As we will see in more detail shortly, an Ethereum address for an EOA is generated from the public key portion of a key pair. However, not all Ethereum addresses represent public–private key pairs; they can also represent contracts, which, as we will see in [smart_contracts_chapter], are not backed by private keys.
+
+* Public key cryptography (also called "asymmetric cryptography") is a core part of modern-day information security.Public key cryptography uses unique keys to secure information. These keys are based on mathematical functions that have a special property: it is easy to calculate them, but hard to calculate their inverse. Based on these functions, cryptography enables the creation of digital secrets and unforgeable digital signatures, which are secured by the laws of mathematics.
+
+* A more advanced category of mathematical functions that is useful in cryptography is based on arithmetic operations on an elliptic curve. In elliptic curve arithmetic, multiplication modulo a prime is simple but division (the inverse) is practically impossible. This is called the discrete logarithm problem and there are currently no known trapdoors. Elliptic curve cryptography is used extensively in modern computer systems and is the basis of Ethereum’s (and other cryptocurrencies') use of private keys and digital signatures.
+
+* A digital signature can be created to sign any message. For Ethereum transactions, the details of the transaction itself are used as the message. The mathematics of cryptography—in this case, elliptic curve cryptography—provides a way for the message (i.e., the transaction details) to be combined with the private key to create a code that can only be produced with knowledge of the private key. That code is called the digital signature.
+
+* When a transaction is sent to the Ethereum network in order to move funds or interact with smart contracts, it needs to be sent with a digital signature created with the private key corresponding to the Ethereum address in question. Elliptic curve mathematics means that anyone can verify that a transaction is valid, by checking that the digital signature matches the transaction details and the Ethereum address to which access is being requested. The verification doesn’t involve the private key at all; that remains private. However, the verification process determines beyond doubt that the transaction could have only come from someone with the private key that corresponds to the public key behind the Ethereum address. This is the "magic" of public key cryptography.
+
+* There is no encryption as part of the Ethereum protocol—all messages that are sent as part of the operation of the Ethereum network can (necessarily) be read by everyone. As such, private keys are only used to create digital signatures for transaction authentication.
+
+* Private Keys:
+----------------
+A private key is simply a number, picked at random. Ownership and control of the private key is the root of user control over all funds associated with the corresponding Ethereum address, as well as access to contracts that authorize that address. The private key is used to create signatures required to spend ether by proving ownership of funds used in a transaction. The private key must remain secret at all times, because revealing it to third parties is equivalent to giving them control over the ether and contracts secured by that private key. The private key must also be backed up and protected from accidental loss. If it’s lost, it cannot be recovered and the funds secured by it are lost forever too.
+
+* The Ethereum private key is just a number. One way to pick your private keys randomly is to simply use a coin, pencil, and paper: toss a coin 256 times and you have the binary digits of a random private key you can use in an Ethereum wallet (probably—see the next section). The public key and address can then be generated from the private key.
+
+* Generating a Private Key from a Random Number:
+------------------------------------------------
+The first and most important step in generating keys is to find a secure source of entropy, or randomness. Creating an Ethereum private key essentially involves picking a number between 1 and 2^256. The exact method you use to pick that number does not matter as long as it is not predictable or deterministic. Ethereum software uses the underlying operating system’s random number generator to produce 256 random bits. 
+
+* More precisely, a private key can be any nonzero number up to a very large number slightly less than 2^256—a huge 78-digit number, roughly 1.158 * 10^77. The exact number shares the first 38 digits with 2256 and is defined as the order of the elliptic curve used in Ethereum.
+
+* To create a private key, we randomly pick a 256-bit number and check that it is within the valid range. In programming terms, this is usually achieved by feeding an even larger string of random bits (collected from a cryptographically secure source of randomness) into a 256-bit hash algorithm such as Keccak-256 or SHA-256, both of which will conveniently produce a 256-bit number. If the result is within the valid range, we have a suitable private key. Otherwise, we simply try again with another random number.
+
+* 2^256—the size of Ethereum’s private key space—is an unfathomably large number. It is approximately 10^77 in decimal; that is, a number with 77 digits. For comparison, the visible universe is estimated to contain between 10^77 and 10^80 atoms. Therefore, at the lower range there are enough private keys to give every atom in the universe an Ethereum account. If you pick a private key randomly, there is no conceivable way anyone will ever guess it or pick it themselves.
+
+* Note that the private key generation process is an offline one; it does not require any communication with the Ethereum network, or indeed any communication with anyone at all. As such, in order to pick a number that no one else will ever pick, it needs to be truly random. If you choose the number yourself, the chance that someone else will try it (and then run off with your ether) is too high. 
+
+* The following is a randomly generated private key shown in hexadecimal format (256 bits shown as 64 hexadecimal digits, each 4 bits):
+    f8f8a2f43c8376ccb0871305060d7b27b0554d2cc72bccf41b2705608452f315
+
+* Public Keys:
+--------------
+- An Ethereum public key is a point on an elliptic curve, meaning it is a set of x and y coordinates that satisfy the elliptic curve equation.
+
+- n simpler terms, an Ethereum public key is two numbers, joined together. These numbers are produced from the private key by a calculation that can only go one way. That means that it is trivial to calculate a public key if you have the private key, but you cannot calculate the private key from the public key.
+
+- The public key is calculated from the private key using elliptic curve multiplication, which is practically irreversible: K = k * G, where k is the private key, G is a constant point called the generator point, K is the resulting public key, and * is the special elliptic curve "multiplication" operator. Note that elliptic curve multiplication is not like normal multiplication. It shares functional attributes with normal multiplication, but that is about it.
+
+- In simpler terms: arithmetic on the elliptic curve is different from "regular" integer arithmetic. A point (G) can be multiplied by an integer (k) to produce another point (K). But there is no such thing as division, so it is not possible to simply "divide" the public key K by the point G to calculate the private key k. This is the one-way mathematical function described in Public Key Cryptography and Cryptocurrency.
+
+- Elliptic curve multiplication is a type of function that cryptographers call a "one-way" function: it is easy to do in one direction (multiplication) and impossible to do in the reverse direction (division). The owner of the private key can easily create the public key and then share it with the world, knowing that no one can reverse the function and calculate the private key from the public key. This mathematical trick becomes the basis for unforgeable and secure digital signatures that prove ownership of Ethereum funds and control of contracts.
+
+* Elliptic curve cryptography is a type of asymmetric or public key cryptography based on the discrete logarithm problem as expressed by addition and multiplication on the points of an elliptic curve.
+
+* Ethereum uses the exact same elliptic curve, called secp256k1, as Bitcoin. That makes it possible to reuse many of the elliptic curve libraries and tools from Bitcoin.
+
+* Serialized EC public key prefixes:
+-------------------------------------
+Prefix      Meaning                         Length (bytes counting prefix)
+------      ------------------              ------------------------
+0x00        Point at infinity                    1
+0x04        Uncompressed point                  65
+0x02        Compressed point with even y        33
+0x03        Compressed point with odd y         33
+
+- Ethereum only uses uncompressed public keys; therefore the only prefix that is relevant is (hex) 04. The serialization concatenates the x and y coordinates of the public key:
+
+    04 + x-coordinate (32 bytes/64 hex) + y-coordinate (32 bytes/64 hex)
+
+Therefore, the public key we calculated earlier is serialized as:
+
+046e145ccef1033dea239875dd00dfb4fee6e3348b84985c92f103444683bae07b83b5c38e5e2b0 \ c8529d7fa3f64d46daa1ece2d9ac14cab9477d042c84c32ccd0
+
+*  A hash function is “any function that can be used to map data of arbitrary size to data of fixed size.”
+
+* A cryptographic hash function is a one-way hash function that maps data of arbitrary size to a fixed-size string of bits. The "one-way" nature means that it is computationally infeasible to recreate the input data if one only knows the output hash. The only way to determine a possible input is to conduct a brute-force search, checking each candidate for a matching output; given that the search space is virtually infinite, it is easy to understand the practical impossibility of the task. 
+
+* Let’s take a closer look at the main properties of cryptographic hash functions. These include:
+
+- Determinism:
+---------------
+A given input message always produces the same hash output.
+
+- Verifiability:
+-----------------
+Computing the hash of a message is efficient (linear complexity).
+
+- Noncorrelation:
+------------------
+A small change to the message (e.g., a 1-bit change) should change the hash output so extensively that it cannot be correlated to the hash of the original message.
+
+- Irreversibility:
+-------------------
+Computing the message from its hash is infeasible, equivalent to a brute-force search through all possible messages.
+
+- Collision protection:
+-----------------------
+It should be infeasible to calculate two different messages that produce the same hash output.
+
+* Resistance to hash collisions is particularly important for avoiding digital signature forgery in Ethereum.
+
+* The combination of these properties make cryptographic hash functions useful for a broad range of security applications, including:
+
+    • Data fingerprinting
+
+    • Message integrity (error detection)
+
+    • Proof of work
+
+    • Authentication (password hashing and key stretching)
+
+    • Pseudorandom number generators
+
+    • Message commitment (commit–reveal mechanisms)
+
+    • Unique identifiers
+
+* Ethereum uses the Keccak-256 cryptographic hash function in many places. Keccak-256 was designed as a candidate for the SHA-3 Cryptographic Hash Function Competition held in 2007 by the National Institute of Standards and Technology. Keccak was the winning algorithm, which became standardized as Federal Information Processing Standard (FIPS) 202 in 2015.
+
+* Ethereum Addresses:
+---------------------
+Ethereum addresses are unique identifiers that are derived from public keys or contracts using the Keccak-256 one-way hash function.Ethereum addresses are hexadecimal numbers, identifiers derived from the last 20 bytes of the Keccak-256 hash of the public key.
+
+* Wallets:
+----------
+The word "wallet" is used to describe a few different things in Ethereum.
+
+At a high level, a wallet is a software application that serves as the primary user interface to Ethereum. The wallet controls access to a user’s money, managing keys and addresses, tracking the balance, and creating and signing transactions. In addition, some Ethereum wallets can also interact with contracts, such as ERC20 tokens.
+
+- the word wallet refers to the system used to store and manage a user’s keys. Every wallet has a key-management component. For some wallets, that’s all there is. Other wallets are part of a much broader category, that of browsers, which are interfaces to Ethereum-based decentralized applications, or DApps, which we will examine in more detail in [decentralized_applications_chap]. 
+
+* Ethereum wallets contain keys, not ether or tokens. Wallets are like keychains containing pairs of private and public keys. Users sign transactions with the private keys, thereby proving they own the ether. The ether is stored on the blockchain.
+
+* There are two primary types of wallets, distinguished by whether the keys they contain are related to each other or not.
+
+- The first type is a Nondeterministic wallet, where each key is independently generated from a different random number. The keys are not related to each other. This type of wallet is also known as a JBOK wallet, from the phrase "Just a Bunch of Keys.”
+
+_ The second type of wallet is a Deterministic wallet, where all the keys are derived from a single master key, known as the seed. All the keys in this type of wallet are related to each other and can be generated again if one has the original seed. There are a number of different key derivation methods used in deterministic wallets. The most commonly used derivation method uses a tree-like structure, as described in Hierarchical Deterministic Wallets (BIP-32/BIP-44).
+
+* To make deterministic wallets slightly more secure against data-loss accidents, such as having your phone stolen or dropping it in the toilet, the seeds are often encoded as a list of words (in English or another language) for you to write down and use in the event of an accident. These are known as the wallet’s mnemonic code words.
+
+* Deterministic or "seeded" wallets are wallets that contain private keys that are all derived from a single master key, or seed. The seed is a randomly generated number that is combined with other data, such as an index number or "chain code" (see Extended public and private keys), to derive any number of private keys. 
+
+* In a deterministic wallet, the seed is sufficient to recover all the derived keys, and therefore a single backup, at creation time, is sufficient to secure all the funds and smart contracts in the wallet. The seed is also sufficient for a wallet export or import, allowing for easy migration of all the keys between different wallet implementations.
+
+* Deterministic wallets were developed to make it easy to derive many keys from a single seed. Currently, the most advanced form of deterministic wallet is the hierarchical deterministic (HD) wallet defined by Bitcoin’s BIP-32 standard.
+
+* HD wallets contain keys derived in a tree structure, such that a parent key can derive a sequence of child keys, each of which can derive a sequence of grandchild keys, and so on. This tree structure is illustrated in HD wallet: a tree of keys generated from a single seed.
+
+* HD wallets offer a few key advantages over simpler deterministic wallets. First, the tree structure can be used to express additional organizational meaning, such as when a specific branch of subkeys is used to receive incoming payments and a different branch is used to receive change from outgoing payments. Branches of keys can also be used in corporate settings, allocating different branches to departments, subsidiaries, specific functions, or accounting categories.
+
+* The second advantage of HD wallets is that users can create a sequence of public keys without having access to the corresponding private keys. This allows HD wallets to be used on an insecure server or in a watch-only or receive-only capacity, where the wallet doesn’t have the private keys that can spend the funds.
+
+* There are many ways to encode a private key for secure backup and retrieval. The currently preferred method is using a sequence of words that, when taken together in the correct order, can uniquely recreate the private key. This is sometimes known as a mnemonic, and the approach has been standardized by BIP-39. Today, many Ethereum wallets (as well as wallets for other cryptocurrencies) use this standard, and can import and export seeds for backup and recovery using interoperable mnemonics.
+
+* Some examples of software wallets supporting these standards include (listed alphabetically) Jaxx, MetaMask, MyCrypto, and MyEtherWallet (MEW). Examples of hardware wallets supporting these standards include Keepkey, Ledger, and Trezor.
+
+* generating Mnemonic words 128 bit / 12 words:
+------------------------------------------------
+        1) Generate Entropy (128 bits)
+                    ⬇
+                    ⬇ 2) SHA256: (Take first 4 bits as checksum)
+                    ⬇
+        3) Entropy (128 bits) + checksum (4 bits)
+                    ⬇
+                    ⬇ 4) Split 132 bits into 12 segments of 11 bits each
+                    ⬇
+        5) BIP39 English word list (2048 words)
+                    ⬇
+                    ⬇ 00000000000,00000000001,...11111111111 :
+                    ⬇ abandon, ability,...zoo
+                    ⬇
+        6) 12 words mnemonic code:
+                 (army van defence carry jealous true garbage claim echo media make crunch)
+
+* Transactions are signed messages originated by an externally owned account (EOA), transmitted by the Ethereum network, and recorded on the Ethereum blockchain. This basic definition conceals a lot of surprising and fascinating details. Another way to look at transactions is that they are the only things that can trigger a change of state, or cause a contract to execute in the EVM. Ethereum is a global singleton state machine, and transactions are what make that state machine "tick," changing its state. Contracts don’t run on their own. Ethereum doesn’t run autonomously. Everything starts with a transaction.
+
+* The Structure of a Transaction:
+---------------------------------
+First let’s take a look at the basic structure of a transaction, as it is serialized and transmitted on the Ethereum network. Each client and application that receives a serialized transaction will store it in-memory using its own internal data structure, perhaps embellished with metadata that doesn’t exist in the network serialized transaction itself. The network-serialization is the only standard form of a transaction.
+- A transaction is a serialized binary message that contains the following data:
+    • Nonce:
+    ---------
+    A sequence number, issued by the originating EOA, used to prevent message replay
+
+    • Gas price:
+    ------------
+    The amount of ether (in wei) that the originator is willing to pay for each unit of gas
+
+    • Gas limit:
+    ------------
+    The maximum amount of gas the originator is willing to buy for this transaction
+
+    • Recipient:
+    -------------
+    The destination Ethereum address
+
+    • Value:
+    --------
+    The amount of ether (in wei) to send to the destination
+
+    • Data:
+    --------
+    The variable-length binary data payload
+
+    • v,r,s:
+    ---------
+    The three components of an ECDSA digital signature of the originating EOA
+
+* Chain identifiers:
+---------------------
+Chain                   Chain ID
+------                  ---------
+Ethereum mainnet            1
+Morden (obsolete), Expanse  2
+Ropsten                     3
+Rinkeby                     4
+Rootstock mainnet           30
+Rootstock testnet           31
+Kovan                       42
+Ethereum Classic mainnet    61
+Ethereum Classic testnet    62
+Geth private testnets       1337
+
+* Solidity:
+------------
+- “Smart contracts” to refer to immutable computer programs that run deterministically in the context of an Ethereum Virtual Machine as part of the Ethereum network protocol—i.e., on the decentralized Ethereum world computer.
+
+- Smart contracts are typically written in a high-level language, such as Solidity. But in order to run, they must be compiled to the low-level bytecode that runs in the EVM. Once compiled, they are deployed on the Ethereum platform using a special contract creation transaction, which is identified as such by being sent to the special contract creation address, namely 0x0 (see [contract_reg]). Each contract is identified by an Ethereum address, which is derived from the contract creation transaction as a function of the originating account and nonce.
+
+- The Ethereum address of a contract can be used in a transaction as the recipient, sending funds to the contract or calling one of the contract’s functions. Note that, unlike with EOAs, there are no keys associated with an account created for a new smart contract. As the contract creator, you don’t get any special privileges at the protocol level (although you can explicitly code them into the smart contract). You certainly don’t receive the private key for the contract account, which in fact does not exist—we can say that smart contract accounts own themselves.
+
+- Importantly, contracts only run if they are called by a transaction. All smart contracts in Ethereum are executed, ultimately, because of a transaction initiated from an EOA. A contract can call another contract that can call another contract, and so on, but the first contract in such a chain of execution will always have been called by a transaction from an EOA. 
+
+- Contracts never run “on their own” or “in the background.” Contracts effectively lie dormant until a transaction triggers execution, either directly or indirectly as part of a chain of contract calls. It is also worth noting that smart contracts are not executed "in parallel" in any sense—the Ethereum world computer can be considered to be a single-threaded machine.
+
+_ Transactions are atomic, they are either successfully terminated or reverted. A successful termination of a transaction means different things under different scenarios: 
+    (1) if a transaction is sent from an EOA to another EOA then any changes to the global state (e.g. account balances) made by the transaction are recorded; 
+
+    (2) if a transaction is sent from an EOA to a contract that does not invoke any other contracts, then any changes to the global state are recorded (e.g. account balances, state variables of the contracts) 
+
+    (3) if a transaction is sent from an EOA to a contract that only invokes other contracts in a manner that propagates errors, then any changes to the global state are recorded (e.g. account balances, state variables of the contracts); and 
+
+    (4) if a transaction is sent from an EOA to a contract that invokes other contracts in a manner that does not propagates errors, then there may only be some changes to the global state recorded (e.g. account balances, state variables of the non erroring contracts), whereas other changes to the global state are not recorded (e.g. state variables of the erroring contracts). 
+
+    Otherwise, if a transaction is reverted, all of its effects (changes in state) are “rolled back” as if the transaction never ran. A failed transaction is still recorded as having been attempted, and the ether spent on gas for the execution is deducted from the originating account, but it otherwise has no other effects on contract or account state.
+
+* As mentioned previously, it is important to remember that a contract’s code cannot be changed. However, a contract can be “deleted,” removing the code and its internal state (storage) from its address, leaving a blank account. Any transactions sent to that account address after the contract has been deleted do not result in any code execution, because there is no longer any code there to execute. To delete a contract, you execute an EVM opcode called SELFDESTRUCT (previously called SUICIDE). That operation costs “negative gas,” a gas refund, thereby incentivizing the release of network client resources from the deletion of stored state. Deleting a contract in this way does not remove the transaction history (past) of the contract, since the blockchain itself is immutable. It is also important to note that the SELFDESTRUCT capability will only be available if the contract author programmed the smart contract to have that functionality. If the contract’s code does not have a SELFDESTRUCT opcode, or it is inaccessible, the smart contract cannot be deleted.
+
+* Data Types:
+
+First, let’s look at some of the basic data types offered in Solidity:
+
+    • Boolean (bool):
+    -----------------
+    Boolean value, true or false, with logical operators ! (not), && (and), || (or), == (equal), and != (not equal).
+
+    • Integer (int, uint):
+    ----------------------
+    Signed (int) and unsigned (uint) integers, declared in increments of 8 bits from int8 to uint256. Without a size suffix, 256-bit quantities are used, to match the word size of the EVM.
+
+    • Fixed point (fixed, ufixed):
+    ------------------------------
+    Fixed-point numbers, declared with (u)fixedMxN where M is the size in bits (increments of 8 up to 256) and N is the number of decimals after the point (up to 18); e.g., ufixed32x2.
+
+    • Address:
+    -----------
+    A 20-byte Ethereum address. The address object has many helpful member functions, the main ones being balance (returns the account balance) and transfer (transfers ether to the account).
+
+    • Byte array (fixed):
+    ---------------------
+    Fixed-size arrays of bytes, declared with bytes1 up to bytes32.
+
+    • Byte array (dynamic):
+    -----------------------
+    Variable-sized arrays of bytes, declared with bytes or string.
+
+    • Enum:
+    -------
+    User-defined type for enumerating discrete values: enum NAME {LABEL1, LABEL 2, ...}.
+
+    • Arrays:
+    ----------
+    An array of any type, either fixed or dynamic: uint32[][5] is a fixed-size array of five dynamic arrays of unsigned integers.
+
+    • Struct:
+    ---------
+    User-defined data containers for grouping variables: struct NAME {TYPE1 VARIABLE1; TYPE2 VARIABLE2; ...}.
+
+    • Mapping:
+    ----------
+    Hash lookup tables for key => value pairs: mapping(KEY_TYPE => VALUE_TYPE) NAME.
+
+* The next set of keywords (public, private, internal, external) specify the function’s visibility:
+
+    • public:
+    ----------
+    Public is the default; such functions can be called by other contracts or EOA transactions, or from within the contract. In our Faucet example, both functions are defined as public.
+
+    • external:
+    -----------
+    External functions are like public functions, except they cannot be called from within the contract unless explicitly prefixed with the keyword this.
+
+    • internal:
+    -----------
+    Internal functions are only accessible from within the contract—they cannot be called by another contract or EOA transaction. They can be called by derived contracts (those that inherit this one).
+
+    • private:
+    -----------
+    Private functions are like internal functions but cannot be called by derived contracts.
+
+* The second set of keywords (pure, constant, view, payable) affect the behavior of the function:
+
+    • constant or view:
+    -------------------
+    A function marked as a view promises not to modify any state. The term constant is an alias for view that will be deprecated in a future release. At this time, the compiler does not enforce the view modifier, only producing a warning, but this is expected to become an enforced keyword in v0.5 of Solidity.
+
+    • pure:
+    -------
+    A pure function is one that neither reads nor writes any variables in storage. It can only operate on arguments and return data, without reference to any stored data. Pure functions are intended to encourage declarative-style programming without side effects or state.
+
+    • payable:
+    ----------
+    A payable function is one that can accept incoming payments. Functions not declared as payable will reject incoming payments. There are two exceptions, due to design decisions in the EVM: coinbase payments and SELFDESTRUCT inheritance will be paid even if the fallback function is not declared as payable, but this makes sense because code execution is not part of those payments anyway.
+
+* Function Modifiers:
+---------------------
+Solidity offers a special type of function called a function modifier. You apply modifiers to functions by adding the modifier name in the function declaration. Modifiers are most often used to create conditions that apply to many functions within a contract. We have an access control statement already, in our destroy function.
+
+* ERC20 required functions and events:
+--------------------------------------
+An ERC20-compliant token contract must provide at least the following functions and events:
+
+    • totalSupply:
+    --------------
+    Returns the total units of this token that currently exist. ERC20 tokens can have a fixed or a variable supply.
+
+    • balanceOf:
+    ------------
+    Given an address, returns the token balance of that address.
+
+    • transfer:
+    ------------
+    Given an address and amount, transfers that amount of tokens to that address, from the balance of the address that executed the transfer.
+
+    • transferFrom:
+    ---------------
+    Given a sender, recipient, and amount, transfers tokens from one account to another. Used in combination with approve.
+
+    • approve:
+    ----------
+    Given a recipient address and amount, authorizes that address to execute several transfers up to that amount, from the account that issued the approval.
+
+    • allowance:
+    -------------
+    Given an owner address and a spender address, returns the remaining amount that the spender is approved to withdraw from the owner.
+
+    • Transfer:
+    -----------
+    Event triggered upon a successful transfer (call to transfer or transferFrom) (even for zero-value transfers).
+
+    • Approval:
+    ------------
+    Event logged upon a successful call to approve.
+
+* ERC20 optional functions:
+---------------------------
+In addition to the required functions listed in the previous section, the following optional functions are also defined by the standard:
+
+    • name:
+    -------
+    Returns the human-readable name (e.g., "US Dollars") of the token.
+
+    • symbol:
+    ----------
+    Returns a human-readable symbol (e.g., "USD") for the token.
+
+    • decimals:
+    ------------
+    Returns the number of decimals used to divide token amounts. For example, if decimals is 2, then the token amount is divided by 100 to get its user representation.
+
+* Orcales:
+-----------
+- Oracles are systems that can provide external data sources to Ethereum smart contracts. The term "oracle" comes from Greek mythology, where it referred to a person in communication with the gods who could see visions of the future. In the context of blockchains, an oracle is a system that can answer questions that are external to Ethereum. Ideally oracles are systems that are trustless, meaning that they do not need to be trusted because they operate on decentralized principles.
+
+- Oracles, ideally, provide a trustless (or at least near-trustless) way of getting extrinsic (i.e., "real-world" or off-chain) information, such as the results of football games, the price of gold, or truly random numbers, onto the Ethereum platform for smart contracts to use. They can also be used to relay data securely to DApp frontends directly. Oracles can therefore be thought of as a mechanism for bridging the gap between the off-chain world and smart contracts. Allowing smart contracts to enforce contractual relationships based on real-world events and data broadens their scope dramatically.
+
+* Some more examples of data that might be provided by oracles include:
+-----------------------------------------------------------------------
+
+    • Random numbers/entropy from physical sources such as quantum/thermal processes: e.g., to fairly select a winner in a lottery smart contract
+
+    • Parametric triggers indexed to natural hazards: e.g., triggering of catastrophe bond smart contracts, such as Richter scale measurements for an earthquake bond
+
+    • Exchange rate data: e.g., for accurate pegging of cryptocurrencies to fiat currency
+
+    • Capital markets data: e.g., pricing baskets of tokenized assets/securities
+
+    • Benchmark reference data: e.g., incorporating interest rates into smart financial derivatives
+
+    • Static/pseudostatic data: security identifiers, country codes, currency codes, etc.
+
+    • Time and interval data: for event triggers grounded in precise time measurements
+
+    • Weather data: e.g., insurance premium calculations based on weather forecasts
+
+    • Political events: for prediction market resolution
+
+    • Sporting events: for prediction market resolution and fantasy sports contracts
+
+    • Geolocation data: e.g., as used in supply chain tracking
+
+    • Damage verification: for insurance contracts
+
+    • Events occurring on other blockchains: interoperability functions
+
+    • Ether market price: e.g., for fiat gas price oracles
+
+    • Flight statistics: e.g., as used by groups and clubs for flight ticket pooling
+
+* All oracles provide a few key functions, by definition. These include the ability to:
+
+    • Collect data from an off-chain source.
+
+    • Transfer the data on-chain with a signed message.
+
+    • Make the data available by putting it in a smart contract’s storage.
+
+* Once the data is available in a smart contract’s storage, it can be accessed by other smart contracts via message calls that invoke a "retrieve" function of the oracle’s smart contract; it can also be accessed by Ethereum nodes or network-enabled clients directly by "looking into” the oracle’s storage.The three main ways to set up an oracle can be categorized as request–response, publish-subscribe, and immediate-read.
+
+* The steps for a request–response oracle may be summarized as follows:
+-----------------------------------------------------------------------
+
+    • Receive a query from a DApp.
+
+    • Parse the query.
+
+    • Check that payment and data access permissions are provided.
+
+    • Retrieve relevant data from an off-chain source (and encrypt it if necessary).
+
+    • Sign the transaction(s) with the data included.
+
+    • Broadcast the transaction(s) to the network.
+
+    • Schedule any further necessary transactions, such as notifications, etc.
+
+* A range of other schemes are also possible; for example, data can be requested from and returned directly by an EOA, removing the need for an oracle smart contract. Similarly, the request and response could be made to and from an Internet of Things–enabled hardware sensor. Therefore, oracles can be human, software, or hardware.
+
+* The request–response pattern described here is commonly seen in client–server architectures. While this is a useful messaging pattern that allows applications to have a two-way conversation, it is perhaps inappropriate under certain conditions. For example, a smart bond requiring an interest rate from an oracle might have to request the data on a daily basis under a request–response pattern in order to ensure the rate is always correct. Given that interest rates change infrequently, a publish–subscribe pattern may be more appropriate here—especially when taking into consideration Ethereum’s limited bandwidth.
+
+* Publish–subscribe is a pattern where publishers (in this context, oracles) do not send messages directly to receivers, but instead categorize published messages into distinct classes. Subscribers are able to express an interest in one or more classes and retrieve only those messages that are of interest. Under such a pattern, an oracle might write the interest rate to its own internal storage each time it changes. Multiple subscribed DApps can simply read it from the oracle contract, thereby reducing the impact on network bandwidth while minimizing storage costs.
+
+* ChainLink has proposed a decentralized oracle network consisting of three key smart contracts—a reputation contract, an order-matching contract, and an aggregation contract—and an off-chain registry of data providers. The reputation contract is used to keep track of data providers' performance. Scores in the reputation contract are used to populate the off-chain registry. The order-matching contract selects bids from oracles using the reputation contract. It then finalizes a service-level agreement, which includes query parameters and the number of oracles required. This means that the purchaser needn’t transact with the individual oracles directly. The aggregation contract collects responses (submitted using a commit–reveal scheme) from multiple oracles, calculates the final collective result of the query, and finally feeds the results back into the reputation contract.
+
+            // query params are (delay in seconds, datasource type,
+            // datasource argument)
+            // specifies JSONPath, to fetch specific portion of JSON API result
+            oraclize_query(60 * 10, "URL",
+                "json(https://min-api.cryptocompare.com/data/price?\
+                fsym=ETH&tsyms=USD,EUR,GBP).USD");
+
+* What Is a DApp?
+- A DApp is an application that is mostly or entirely decentralized.
+
+Consider all the possible aspects of an application that may be decentralized:
+
+    • Backend software (application logic)
+
+    • Frontend software
+
+    • Data storage
+
+    • Message communications
+
+    • Name resolution
+
+* Each of these can be somewhat centralized or somewhat decentralized. For example, a frontend can be developed as a web app that runs on a centralized server, or as a mobile app that runs on your device. The backend and storage can be on private servers and proprietary databases, or you can use a smart contract and P2P storage.
+
+* There are many advantages to creating a DApp that a typical centralized architecture cannot provide:
+
+    • Resiliency
+    Because the business logic is controlled by a smart contract, a DApp backend will be fully distributed and managed on a blockchain platform. Unlike an application deployed on a centralized server, a DApp will have no downtime and will continue to be available as long as the platform is still operating.
+
+    • Transparency
+    The on-chain nature of a DApp allows everyone to inspect the code and be more sure about its function. Any interaction with the DApp will be stored forever in the blockchain.
+
+    • Censorship resistance
+    As long as a user has access to an Ethereum node (running one if necessary), the user will always be able to interact with a DApp without interference from any centralized control. No service provider, or even the owner of the smart contract, can alter the code once it is deployed on the network.
