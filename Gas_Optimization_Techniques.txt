@@ -236,7 +236,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
     --------------------------------------------------------------
 
         - Mappings are usually less expensive than arrays, but you can’t iterate over them.
-
+                ```solidity
                 mapping(unit => unit) map;
                 unit[] map2;
 
@@ -247,7 +247,7 @@ At first, you need to know that there are 2 ways to optimize gas on a Decentrali
                 function not_optimized() external{
                     map2.push(10);
                 }
-
+            ```
         - not_optimised() function gas usage: 48409 gas
         - optimised() function gas usage: 43400 gas
 
