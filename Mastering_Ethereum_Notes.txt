@@ -96,6 +96,17 @@
     • Clients:
     Ethereum has several interoperable implementations of the client software, the most prominent of which are Go-Ethereum (Geth) and Parity.
 
+* EVM Architechture:
+    - The EVM uses a stack-based architecture and a word size of 256 bits. The 256-bit word size allows the EVM to facilitate native hashing and elliptic curve operations that ensure funds can be spent only by their rightful owners. The EVM supports various programming languages such as Vyper and Solidity, with Solidity being the most popular programming language for smart contract source code. These programming languages are used to write smart contracts, which are converted into the bytecode needed to be utilized by the EVM.
+
+    - Once the Smart contract is compiled, it ll generate ABI and Bytecode.
+
+    - The bytecode stored on-chain, known as the runtime bytecode, is then converted into an opcode that the EVM computation engine interprets to carry out those actions.
+
+    - When an Ethereum transaction executes a smart contract, an EVM is loaded with the information for the transaction being processed. For example, one variable needed for a smart contract execution is the gas supply, which is set to the amount of gas paid by the sender. The gas supply is reduced as the transaction progresses, and if, at any point, the gas supply reaches zero, the transaction is abandoned. Although abandoned transactions don’t result in changes to the Ethereum state and are not considered valid transactions, the block’s beneficiary is paid for providing resources up to the halting point.
+
+    - Smart contracts can initiate transactions and call other contracts on their own. In this case, each call results in another EVM being loaded with specific information for the new transaction. This new information is initialized from the EVM one level above. If there isn’t enough gas to complete the execution, the state is discarded, and the transaction execution is reset to the EVM one level above.
+
 * Alan Turing further defined a system to be Turing complete if it can be used to simulate any Turing machine. Such a system is called a Universal Turing machine (UTM).
 
 * Ethereum’s ability to execute a stored program, in a state machine called the Ethereum Virtual Machine, while reading and writing data to memory makes it a Turing-complete system and therefore a UTM. Ethereum can compute any algorithm that can be computed by any Turing machine, given the limitations of finite memory.
